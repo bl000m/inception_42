@@ -25,9 +25,9 @@ RUN apt-get install openssl -y
 # -x509 =>  we want a SELF SIGNED CERTIFICATE (signed by the same entity that certifies)
 # -days 365=> set validity period of the certificate to 365 days
 # out cert.pem => where we want the CERTIFICATE, and PUBLIC KEY, to be stored
-RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/mpagani.42.fr.key -x509 -days 365 -subj "/C=FR" -out /etc/ssl/mpagani.42.fr.crt;
+RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/mpagani.42.fr.key -x509 -days 365 -subj "/C=FR" -out /etc/ssl/mpagani.42.fr.crt
 
-COPY /conf/nginx.conf /etc/nginx/sites-available/mpagani.42.fr.conf
+COPY conf/nginx.conf /etc/nginx/sites-available/mpagani.42.fr.conf
 RUN ln -s /etc/nginx/sites-available/mpagani.42.fr.conf /etc/nginx/sites-enabled/mpagani.42.fr.conf
 
 EXPOSE 443
