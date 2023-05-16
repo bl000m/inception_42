@@ -49,15 +49,31 @@ RUN apt-get install mariadb-client
 # -x509 =>  we want a SELF SIGNED CERTIFICATE (signed by the same entity that certifies)
 # -days 365=> set validity period of the certificate to 365 days
 # out cert.pem => where we want the CERTIFICATE, and PUBLIC KEY, to be stored
-RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/mpagani.42.fr.key -x509 -days 365 -subj "/C=FR" -out /etc/ssl/mpagani.42.fr.crt
 
-COPY conf/nginx.conf /etc/nginx/sites-available/mpagani.42.fr.conf
-RUN ln -s /etc/nginx/sites-available/mpagani.42.fr.conf /etc/nginx/sites-enabled/mpagani.42.fr.conf
+# WP-CLI is the command-line interface for WordPress. You can update plugins, 
+# configure multisite installations and much more, without using a web browser.
+# => HOW TO INSTALL IT: https://make.wordpress.org/cli/handbook/guides/installing/
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
 
-EXPOSE 443
+
+run MKDIR -P /var/www/html/wordpress
+
+EXPOSE 9000
+
+# NB when using COPY instruction to copy files from the host machine to the Docker Image, 
+# the destination directory is created automatically if it doesn't exist
+
+# copy wordpress installation cmds to tmp docker folder => not persistent and not visible
+COPY /tools/installing_wordpress.sh /tmp
+
+# copy the PHP-FPM (FastCGI Process Manager) config file containing all the directives that control the behavior of PHP-FPM
+# to PHP pool folder (created installing PHP ?) 
+COPY /tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN apt-get install dumb-init -y
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "/tmp/installing_wordpress.sh"]

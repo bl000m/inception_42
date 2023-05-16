@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    # image: nginx
+    container_name: nginx
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
+  
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    # depends_on:
+    #   - mariadb
+    networks:
+      - inception
+    restart: always
+
+networks:
+  inception:
+    driver: bridge
+    name: inception
+
+volumes:
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mpagani/data/wordpress
