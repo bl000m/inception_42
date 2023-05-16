@@ -1,0 +1,311 @@
+Sending build context to Docker daemon   7.68kB
+Step 1/16 : FROM debian:buster
+ ---> dd20fc9536df
+Step 2/16 : ARG DB_USER
+ ---> Running in 85f3cb93021c
+Removing intermediate container 85f3cb93021c
+ ---> 5286f4f3c8ef
+Step 3/16 : ARG DB_DATABASE
+ ---> Running in 387379d4aa2b
+Removing intermediate container 387379d4aa2b
+ ---> af63778c1a56
+Step 4/16 : ARG DB_USER_PASSWORD
+ ---> Running in 5edccc6a1a30
+Removing intermediate container 5edccc6a1a30
+ ---> bdb0ef97d6bb
+Step 5/16 : ARG DB_ROOT_PASSWORD
+ ---> Running in 31d2bac1340e
+Removing intermediate container 31d2bac1340e
+ ---> 08122a44b8cf
+Step 6/16 : RUN apt-get update -y
+ ---> Running in ae056cd6ecb8
+Get:1 http://deb.debian.org/debian buster InRelease [122 kB]
+Get:2 http://deb.debian.org/debian-security buster/updates InRelease [34.8 kB]
+Get:3 http://deb.debian.org/debian buster-updates InRelease [56.6 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 Packages [7909 kB]
+Get:5 http://deb.debian.org/debian-security buster/updates/main amd64 Packages [489 kB]
+Get:6 http://deb.debian.org/debian buster-updates/main amd64 Packages [8788 B]
+Fetched 8620 kB in 1s (5929 kB/s)
+Reading package lists...
+Removing intermediate container ae056cd6ecb8
+ ---> 47ba61b3484f
+Step 7/16 : RUN apt-get upgrade -y
+ ---> Running in aae03241ee8c
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  tzdata
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 267 kB of archives.
+After this operation, 6144 B of additional disk space will be used.
+Get:1 http://deb.debian.org/debian-security buster/updates/main amd64 tzdata all 2021a-0+deb10u11 [267 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 267 kB in 0s (3415 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6677 files and directories currently installed.)
+Preparing to unpack .../tzdata_2021a-0+deb10u11_all.deb ...
+Unpacking tzdata (2021a-0+deb10u11) over (2021a-0+deb10u10) ...
+Setting up tzdata (2021a-0+deb10u11) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.28.1 /usr/local/share/perl/5.28.1 /usr/lib/x86_64-linux-gnu/perl5/5.28 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.28 /usr/share/perl/5.28 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+
+Current default time zone: 'Etc/UTC'
+Local time is now:      Tue May 16 14:05:22 UTC 2023.
+Universal Time is now:  Tue May 16 14:05:22 UTC 2023.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Removing intermediate container aae03241ee8c
+ ---> 7e3b5ba7192c
+Step 8/16 : RUN apt-get install mariadb-server -y
+ ---> Running in ffd45600a74f
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  galera-3 gawk libaio1 libcgi-fast-perl libcgi-pm-perl
+  libconfig-inifiles-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl
+  libfcgi-perl libgdbm-compat4 libgdbm6 libgpm2 libhtml-parser-perl
+  libhtml-tagset-perl libhtml-template-perl libhttp-date-perl
+  libhttp-message-perl libio-html-perl liblwp-mediatypes-perl libmariadb3
+  libmpfr6 libncurses6 libperl5.28 libpopt0 libreadline5 libreadline7
+  libsigsegv2 libsnappy1v5 libssl1.1 libterm-readkey-perl libtimedate-perl
+  liburi-perl libwrap0 lsb-base lsof mariadb-client-10.3
+  mariadb-client-core-10.3 mariadb-common mariadb-server-10.3
+  mariadb-server-core-10.3 mysql-common netbase perl perl-modules-5.28 psmisc
+  readline-common rsync socat
+Suggested packages:
+  gawk-doc libclone-perl libmldbm-perl libnet-daemon-perl
+  libsql-statement-perl gdbm-l10n gpm libdata-dump-perl
+  libipc-sharedcache-perl sensible-utils libwww-perl mailx mariadb-test
+  netcat-openbsd tinyca perl-doc libterm-readline-gnu-perl
+  | libterm-readline-perl-perl make libb-debug-perl liblocale-codes-perl
+  readline-doc openssh-client openssh-server
+The following NEW packages will be installed:
+  galera-3 gawk libaio1 libcgi-fast-perl libcgi-pm-perl
+  libconfig-inifiles-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl
+  libfcgi-perl libgdbm-compat4 libgdbm6 libgpm2 libhtml-parser-perl
+  libhtml-tagset-perl libhtml-template-perl libhttp-date-perl
+  libhttp-message-perl libio-html-perl liblwp-mediatypes-perl libmariadb3
+  libmpfr6 libncurses6 libperl5.28 libpopt0 libreadline5 libreadline7
+  libsigsegv2 libsnappy1v5 libssl1.1 libterm-readkey-perl libtimedate-perl
+  liburi-perl libwrap0 lsb-base lsof mariadb-client-10.3
+  mariadb-client-core-10.3 mariadb-common mariadb-server mariadb-server-10.3
+  mariadb-server-core-10.3 mysql-common netbase perl perl-modules-5.28 psmisc
+  readline-common rsync socat
+0 upgraded, 50 newly installed, 0 to remove and 0 not upgraded.
+Need to get 32.2 MB of archives.
+After this operation, 226 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian buster/main amd64 perl-modules-5.28 all 5.28.1-6+deb10u1 [2873 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 libgdbm6 amd64 1.18.1-4 [64.7 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libgdbm-compat4 amd64 1.18.1-4 [44.1 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 libperl5.28 amd64 5.28.1-6+deb10u1 [3894 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 perl amd64 5.28.1-6+deb10u1 [204 kB]
+Get:6 http://deb.debian.org/debian buster/main amd64 libmpfr6 amd64 4.0.2-1 [775 kB]
+Get:7 http://deb.debian.org/debian buster/main amd64 readline-common all 7.0-5 [70.6 kB]
+Get:8 http://deb.debian.org/debian buster/main amd64 libreadline7 amd64 7.0-5 [151 kB]
+Get:9 http://deb.debian.org/debian buster/main amd64 libsigsegv2 amd64 2.12-2 [32.8 kB]
+Get:10 http://deb.debian.org/debian buster/main amd64 gawk amd64 1:4.2.1+dfsg-1 [660 kB]
+Get:11 http://deb.debian.org/debian buster/main amd64 mysql-common all 5.8+1.0.5 [7324 B]
+Get:12 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-common all 1:10.3.38-0+deb10u1 [33.4 kB]
+Get:13 http://deb.debian.org/debian-security buster/updates/main amd64 libssl1.1 amd64 1.1.1n-0+deb10u4 [1551 kB]
+Get:14 http://deb.debian.org/debian buster/main amd64 galera-3 amd64 25.3.25-2 [920 kB]
+Get:15 http://deb.debian.org/debian buster/main amd64 libdbi-perl amd64 1.642-1+deb10u2 [775 kB]
+Get:16 http://deb.debian.org/debian buster/main amd64 lsb-base all 10.2019051400 [28.4 kB]
+Get:17 http://deb.debian.org/debian buster/main amd64 lsof amd64 4.91+dfsg-1 [319 kB]
+Get:18 http://deb.debian.org/debian buster/main amd64 libconfig-inifiles-perl all 3.000001-1 [51.9 kB]
+Get:19 http://deb.debian.org/debian buster/main amd64 libaio1 amd64 0.3.112-3 [11.2 kB]
+Get:20 http://deb.debian.org/debian-security buster/updates/main amd64 libncurses6 amd64 6.1+20181013-2+deb10u3 [102 kB]
+Get:21 http://deb.debian.org/debian buster/main amd64 libreadline5 amd64 5.2+dfsg-3+b13 [120 kB]
+Get:22 http://deb.debian.org/debian buster/main amd64 libsnappy1v5 amd64 1.1.7-1 [17.0 kB]
+Get:23 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-client-core-10.3 amd64 1:10.3.38-0+deb10u1 [5771 kB]
+Get:24 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-client-10.3 amd64 1:10.3.38-0+deb10u1 [1145 kB]
+Get:25 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-server-core-10.3 amd64 1:10.3.38-0+deb10u1 [6211 kB]
+Get:26 http://deb.debian.org/debian buster/main amd64 psmisc amd64 23.2-1+deb10u1 [126 kB]
+Get:27 http://deb.debian.org/debian buster/main amd64 libpopt0 amd64 1.16-12 [49.4 kB]
+Get:28 http://deb.debian.org/debian buster/main amd64 rsync amd64 3.1.3-6 [397 kB]
+Get:29 http://deb.debian.org/debian buster/main amd64 libwrap0 amd64 7.6.q-28 [58.7 kB]
+Get:30 http://deb.debian.org/debian buster/main amd64 socat amd64 1.7.3.2-2 [358 kB]
+Get:31 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-server-10.3 amd64 1:10.3.38-0+deb10u1 [4225 kB]
+Get:32 http://deb.debian.org/debian buster/main amd64 netbase all 5.6 [19.4 kB]
+Get:33 http://deb.debian.org/debian buster/main amd64 libhtml-tagset-perl all 3.20-3 [12.7 kB]
+Get:34 http://deb.debian.org/debian buster/main amd64 liburi-perl all 1.76-1 [89.9 kB]
+Get:35 http://deb.debian.org/debian buster/main amd64 libhtml-parser-perl amd64 3.72-3+b3 [105 kB]
+Get:36 http://deb.debian.org/debian buster/main amd64 libcgi-pm-perl all 4.40-1 [222 kB]
+Get:37 http://deb.debian.org/debian buster/main amd64 libfcgi-perl amd64 0.78-2+b3 [39.0 kB]
+Get:38 http://deb.debian.org/debian buster/main amd64 libcgi-fast-perl all 1:2.13-1 [11.4 kB]
+Get:39 http://deb.debian.org/debian-security buster/updates/main amd64 libmariadb3 amd64 1:10.3.38-0+deb10u1 [173 kB]
+Get:40 http://deb.debian.org/debian buster/main amd64 libdbd-mysql-perl amd64 4.050-2 [121 kB]
+Get:41 http://deb.debian.org/debian buster/main amd64 libencode-locale-perl all 1.05-1 [13.7 kB]
+Get:42 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+Get:43 http://deb.debian.org/debian buster/main amd64 libhtml-template-perl all 2.97-1 [66.0 kB]
+Get:44 http://deb.debian.org/debian buster/main amd64 libtimedate-perl all 2.3000-2+deb10u1 [38.1 kB]
+Get:45 http://deb.debian.org/debian buster/main amd64 libhttp-date-perl all 6.02-1 [10.7 kB]
+Get:46 http://deb.debian.org/debian buster/main amd64 libio-html-perl all 1.001-1 [17.6 kB]
+Get:47 http://deb.debian.org/debian buster/main amd64 liblwp-mediatypes-perl all 6.02-1 [22.1 kB]
+Get:48 http://deb.debian.org/debian buster/main amd64 libhttp-message-perl all 6.18-1 [77.8 kB]
+Get:49 http://deb.debian.org/debian buster/main amd64 libterm-readkey-perl amd64 2.38-1 [27.4 kB]
+Get:50 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-server all 1:10.3.38-0+deb10u1 [32.4 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 32.2 MB in 1s (54.6 MB/s)
+Selecting previously unselected package perl-modules-5.28.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6680 files and directories currently installed.)
+Preparing to unpack .../0-perl-modules-5.28_5.28.1-6+deb10u1_all.deb ...
+Unpacking perl-modules-5.28 (5.28.1-6+deb10u1) ...
+Selecting previously unselected package libgdbm6:amd64.
+Preparing to unpack .../1-libgdbm6_1.18.1-4_amd64.deb ...
+Unpacking libgdbm6:amd64 (1.18.1-4) ...
+Selecting previously unselected package libgdbm-compat4:amd64.
+Preparing to unpack .../2-libgdbm-compat4_1.18.1-4_amd64.deb ...
+Unpacking libgdbm-compat4:amd64 (1.18.1-4) ...
+Selecting previously unselected package libperl5.28:amd64.
+Preparing to unpack .../3-libperl5.28_5.28.1-6+deb10u1_amd64.deb ...
+Unpacking libperl5.28:amd64 (5.28.1-6+deb10u1) ...
+Selecting previously unselected package perl.
+Preparing to unpack .../4-perl_5.28.1-6+deb10u1_amd64.deb ...
+Unpacking perl (5.28.1-6+deb10u1) ...
+Selecting previously unselected package libmpfr6:amd64.
+Preparing to unpack .../5-libmpfr6_4.0.2-1_amd64.deb ...
+Unpacking libmpfr6:amd64 (4.0.2-1) ...
+Selecting previously unselected package readline-common.
+Preparing to unpack .../6-readline-common_7.0-5_all.deb ...
+Unpacking readline-common (7.0-5) ...
+Selecting previously unselected package libreadline7:amd64.
+Preparing to unpack .../7-libreadline7_7.0-5_amd64.deb ...
+Unpacking libreadline7:amd64 (7.0-5) ...
+Selecting previously unselected package libsigsegv2:amd64.
+Preparing to unpack .../8-libsigsegv2_2.12-2_amd64.deb ...
+Unpacking libsigsegv2:amd64 (2.12-2) ...
+Setting up libmpfr6:amd64 (4.0.2-1) ...
+Setting up readline-common (7.0-5) ...
+Setting up libreadline7:amd64 (7.0-5) ...
+Setting up libsigsegv2:amd64 (2.12-2) ...
+Selecting previously unselected package gawk.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8670 files and directories currently installed.)
+Preparing to unpack .../00-gawk_1%3a4.2.1+dfsg-1_amd64.deb ...
+Unpacking gawk (1:4.2.1+dfsg-1) ...
+Selecting previously unselected package mysql-common.
+Preparing to unpack .../01-mysql-common_5.8+1.0.5_all.deb ...
+Unpacking mysql-common (5.8+1.0.5) ...
+Selecting previously unselected package mariadb-common.
+Preparing to unpack .../02-mariadb-common_1%3a10.3.38-0+deb10u1_all.deb ...
+Unpacking mariadb-common (1:10.3.38-0+deb10u1) ...
+Selecting previously unselected package libssl1.1:amd64.
+Preparing to unpack .../03-libssl1.1_1.1.1n-0+deb10u4_amd64.deb ...
+Unpacking libssl1.1:amd64 (1.1.1n-0+deb10u4) ...
+Selecting previously unselected package galera-3.
+Preparing to unpack .../04-galera-3_25.3.25-2_amd64.deb ...
+Unpacking galera-3 (25.3.25-2) ...
+Selecting previously unselected package libdbi-perl:amd64.
+Preparing to unpack .../05-libdbi-perl_1.642-1+deb10u2_amd64.deb ...
+Unpacking libdbi-perl:amd64 (1.642-1+deb10u2) ...
+Selecting previously unselected package lsb-base.
+Preparing to unpack .../06-lsb-base_10.2019051400_all.deb ...
+Unpacking lsb-base (10.2019051400) ...
+Selecting previously unselected package lsof.
+Preparing to unpack .../07-lsof_4.91+dfsg-1_amd64.deb ...
+Unpacking lsof (4.91+dfsg-1) ...
+Selecting previously unselected package libconfig-inifiles-perl.
+Preparing to unpack .../08-libconfig-inifiles-perl_3.000001-1_all.deb ...
+Unpacking libconfig-inifiles-perl (3.000001-1) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../09-libaio1_0.3.112-3_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.112-3) ...
+Selecting previously unselected package libncurses6:amd64.
+Preparing to unpack .../10-libncurses6_6.1+20181013-2+deb10u3_amd64.deb ...
+Unpacking libncurses6:amd64 (6.1+20181013-2+deb10u3) ...
+Selecting previously unselected package libreadline5:amd64.
+Preparing to unpack .../11-libreadline5_5.2+dfsg-3+b13_amd64.deb ...
+Unpacking libreadline5:amd64 (5.2+dfsg-3+b13) ...
+Selecting previously unselected package libsnappy1v5:amd64.
+Preparing to unpack .../12-libsnappy1v5_1.1.7-1_amd64.deb ...
+Unpacking libsnappy1v5:amd64 (1.1.7-1) ...
+Selecting previously unselected package mariadb-client-core-10.3.
+Preparing to unpack .../13-mariadb-client-core-10.3_1%3a10.3.38-0+deb10u1_amd64.deb ...
+Unpacking mariadb-client-core-10.3 (1:10.3.38-0+deb10u1) ...
+Selecting previously unselected package mariadb-client-10.3.
+Preparing to unpack .../14-mariadb-client-10.3_1%3a10.3.38-0+deb10u1_amd64.deb ...
+Unpacking mariadb-client-10.3 (1:10.3.38-0+deb10u1) ...
+Selecting previously unselected package mariadb-server-core-10.3.
+Preparing to unpack .../15-mariadb-server-core-10.3_1%3a10.3.38-0+deb10u1_amd64.deb ...
+Unpacking mariadb-server-core-10.3 (1:10.3.38-0+deb10u1) ...
+Selecting previously unselected package psmisc.
+Preparing to unpack .../16-psmisc_23.2-1+deb10u1_amd64.deb ...
+Unpacking psmisc (23.2-1+deb10u1) ...
+Selecting previously unselected package libpopt0:amd64.
+Preparing to unpack .../17-libpopt0_1.16-12_amd64.deb ...
+Unpacking libpopt0:amd64 (1.16-12) ...
+Selecting previously unselected package rsync.
+Preparing to unpack .../18-rsync_3.1.3-6_amd64.deb ...
+Unpacking rsync (3.1.3-6) ...
+Selecting previously unselected package libwrap0:amd64.
+Preparing to unpack .../19-libwrap0_7.6.q-28_amd64.deb ...
+Unpacking libwrap0:amd64 (7.6.q-28) ...
+Selecting previously unselected package socat.
+Preparing to unpack .../20-socat_1.7.3.2-2_amd64.deb ...
+Unpacking socat (1.7.3.2-2) ...
+Setting up mysql-common (5.8+1.0.5) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up mariadb-common (1:10.3.38-0+deb10u1) ...
+update-alternatives: using /etc/mysql/mariadb.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Selecting previously unselected package mariadb-server-10.3.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9441 files and directories currently installed.)
+Preparing to unpack .../00-mariadb-server-10.3_1%3a10.3.38-0+deb10u1_amd64.deb ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+ERROR: There's not enough space in /var/lib/mysql/
+dpkg: error processing archive /tmp/apt-dpkg-install-hdDL9K/00-mariadb-server-10.3_1%3a10.3.38-0+deb10u1_amd64.deb (--unpack):
+ new mariadb-server-10.3 package pre-installation script subprocess returned error exit status 1
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package netbase.
+Preparing to unpack .../01-netbase_5.6_all.deb ...
+Unpacking netbase (5.6) ...
+Selecting previously unselected package libhtml-tagset-perl.
+Preparing to unpack .../02-libhtml-tagset-perl_3.20-3_all.deb ...
+Unpacking libhtml-tagset-perl (3.20-3) ...
+Selecting previously unselected package liburi-perl.
+Preparing to unpack .../03-liburi-perl_1.76-1_all.deb ...
+Unpacking liburi-perl (1.76-1) ...
+Selecting previously unselected package libhtml-parser-perl.
+Preparing to unpack .../04-libhtml-parser-perl_3.72-3+b3_amd64.deb ...
+Unpacking libhtml-parser-perl (3.72-3+b3) ...
+Selecting previously unselected package libcgi-pm-perl.
+Preparing to unpack .../05-libcgi-pm-perl_4.40-1_all.deb ...
+Unpacking libcgi-pm-perl (4.40-1) ...
+Selecting previously unselected package libfcgi-perl.
+Preparing to unpack .../06-libfcgi-perl_0.78-2+b3_amd64.deb ...
+Unpacking libfcgi-perl (0.78-2+b3) ...
+Selecting previously unselected package libcgi-fast-perl.
+Preparing to unpack .../07-libcgi-fast-perl_1%3a2.13-1_all.deb ...
+Unpacking libcgi-fast-perl (1:2.13-1) ...
+Selecting previously unselected package libmariadb3:amd64.
+Preparing to unpack .../08-libmariadb3_1%3a10.3.38-0+deb10u1_amd64.deb ...
+Unpacking libmariadb3:amd64 (1:10.3.38-0+deb10u1) ...
+Selecting previously unselected package libdbd-mysql-perl:amd64.
+Preparing to unpack .../09-libdbd-mysql-perl_4.050-2_amd64.deb ...
+Unpacking libdbd-mysql-perl:amd64 (4.050-2) ...
+Selecting previously unselected package libencode-locale-perl.
+Preparing to unpack .../10-libencode-locale-perl_1.05-1_all.deb ...
+Unpacking libencode-locale-perl (1.05-1) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../11-libgpm2_1.20.7-5_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-5) ...
+Selecting previously unselected package libhtml-template-perl.
+Preparing to unpack .../12-libhtml-template-perl_2.97-1_all.deb ...
+Unpacking libhtml-template-perl (2.97-1) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../13-libtimedate-perl_2.3000-2+deb10u1_all.deb ...
+Unpacking libtimedate-perl (2.3000-2+deb10u1) ...
+Selecting previously unselected package libhttp-date-perl.
+Preparing to unpack .../14-libhttp-date-perl_6.02-1_all.deb ...
+Unpacking libhttp-date-perl (6.02-1) ...
+Selecting previously unselected package libio-html-perl.
+Preparing to unpack .../15-libio-html-perl_1.001-1_all.deb ...
+Unpacking libio-html-perl (1.001-1) ...
