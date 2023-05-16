@@ -22,10 +22,18 @@ RUN apt-get install openssl -y
 # -nodes => no password for private key
 # -subj => provide subject information for the certificate (3 attributes: CN (common name), O (organization), C(country))
 # -keyout key.pem=> where to store the private key (in key.pem in this case)
+# ____________________________________________ ! ____________________________________________
+
 # -x509 =>  we want a SELF SIGNED CERTIFICATE (signed by the same entity that certifies)
+# Generate a self-signed SSL certificate for local development or testing purposes.
+# ________________________________________________________________________________________
+
+# Note: Self-signed certificates are not trusted by browsers, so they may display a security warning.
+
 # -days 365=> set validity period of the certificate to 365 days
 # out cert.pem => where we want the CERTIFICATE, and PUBLIC KEY, to be stored
 RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/mpagani.42.fr.key -x509 -days 365 -subj "/C=FR" -out /etc/ssl/mpagani.42.fr.crt
+
 
 COPY conf/nginx.conf /etc/nginx/sites-available/mpagani.42.fr.conf
 RUN ln -s /etc/nginx/sites-available/mpagani.42.fr.conf /etc/nginx/sites-enabled/mpagani.42.fr.conf
