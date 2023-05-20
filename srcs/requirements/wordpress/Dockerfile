@@ -39,7 +39,7 @@ RUN apt-get install php-mysqli
 # Install MariaDB client for interacting with MariaDB or MySQL databases.
 # The MariaDB client provides command-line tools to connect, query, and manage databases, facilitating database administration tasks.
 
-RUN apt-get install mariadb-client
+# RUN apt-get install mariadb-client
 
 # req => subcommand to specify that we want either a SELF SIGNED CERTIFICATE or a CSR (certificate signing request)
 # -newkey rsa:2048 => we want a RSA (name of the cryptographic algorithm) key pair with a key length of 2048 bits. 
@@ -58,7 +58,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && mv wp-cli.phar /usr/local/bin/wp
 
 
-run MKDIR -P /var/www/html/wordpress
+run mkdir -p /var/www/html/wordpress
 
 EXPOSE 9000
 
