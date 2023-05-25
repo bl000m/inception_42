@@ -1,3 +1,8 @@
+
+# if [-f ./wp-config.php]
+# then
+#     echo "wordpress already downloaded"
+# else
 cd /var/www/html/wordpress
 # Change directory to /var/www/html/wordpress
 
@@ -27,3 +32,5 @@ mkdir -p /run/php/
 
 php-fpm7.3 -F
 # LAUNCH PHP-FPM: Start the PHP-FPM service (FastCGI Process Manager) using PHP version 7.3 in foreground mode.
+# fi
+# exec "$@"

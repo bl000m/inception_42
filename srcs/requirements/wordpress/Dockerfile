@@ -34,7 +34,7 @@ RUN apt-get install php-mysql -y
 # Install PHP MySQLi extension for MySQL database connectivity.
 # Enables PHP to interact with MySQL databases using the MySQLi extension.
 # The MySQLi extension provides enhanced functionality for interacting with MySQL databases in PHP, including improved security and support for advanced features.
-RUN apt-get install php-mysqli
+RUN apt-get install php-mysqli -y
 
 # Install MariaDB client for interacting with MariaDB or MySQL databases.
 # The MariaDB client provides command-line tools to connect, query, and manage databases, facilitating database administration tasks.
@@ -58,7 +58,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && mv wp-cli.phar /usr/local/bin/wp
 
 
-run mkdir -p /var/www/html/wordpress
+RUN mkdir -p /var/www/html/wordpress
 
 EXPOSE 9000
 
@@ -67,12 +67,13 @@ EXPOSE 9000
 
 # copy wordpress installation cmds to tmp docker folder => not persistent and not visible
 COPY /tools/installing_wordpress.sh /tmp
+RUN chmod +x /tmp/installing_wordpress.sh
 
 # copy the PHP-FPM (FastCGI Process Manager) config file containing all the directives that control the behavior of PHP-FPM
 # to PHP pool folder (created installing PHP ?) 
 COPY /tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
-RUN apt-get install dumb-init -y
+RUN apt-get install -y dumb-init
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
