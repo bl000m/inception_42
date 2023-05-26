@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3'
 # ________________ SERVICES ___________________
 
 services:
@@ -23,10 +23,10 @@ services:
     build: 
       context: ./requirements/mariadb
       args:
-          DB_DATABASE: ${DB_DATABASE}
-          DB_USER: ${DB_USER}
-          DB_USER_PASSWORD: ${DB_USER_PASSWORD}
-          DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+          - DB_DATABASE
+          - DB_USER
+          - DB_USER_PASSWORD
+          - DB_ROOT_PASSWORD
     image: mariadb
     container_name: mariadb
     env_file:
@@ -39,7 +39,21 @@ services:
     
 # ................ wordpress ..................
   wordpress:
-    build: ./requirements/wordpress
+    build: 
+      context: ./requirements/wordpress
+      args:
+        - DB_DATABASE
+        - DB_USER
+        - DB_USER_PASSWORD
+        - DB_HOST
+        - DOMAIN_NAME
+        - WP_SITE_TITLE
+        - WP_ADMIN
+        - WP_ADMIN_EMAIL
+        - WP_ADMIN_PASSWORD
+        - WP_USER
+        - WP_USER_EMAIL
+        - WP_USER_PASSWORD
     image: wordpress
     container_name: wordpress
     env_file:
@@ -59,7 +73,7 @@ networks:
 
   inception:
     driver: bridge
-    name: inception
+    # name: inception
 
 # _________________ VOLUMES __________________
 
@@ -67,7 +81,7 @@ volumes:
 
   wordpress:
     driver: local
-    name: wordpress
+    # name: wordpress
     driver_opts:
       type: none
       o: bind
@@ -75,7 +89,7 @@ volumes:
   
   mariadb:
     driver: local
-    name: mariadb
+    # name: mariadb
     driver_opts:
       type: none
       o: bind
