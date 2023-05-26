@@ -1,5 +1,19 @@
 FROM debian:buster
 
+ENV DEBIAN_FRONTEND=noninteractive
+ARG DB_DATABASE=;
+ARG DB_USER=;
+ARG DB_USER_PASSWORD=;
+ARG DB_HOST=;
+ARG DOMAIN_NAME=;
+ARG WP_SITE_TITLE=;
+ARG WP_ADMIN=;
+ARG WP_ADMIN_EMAIL=;
+ARG WP_ADMIN_PASSWORD=;
+ARG WP_USER=;
+ARG WP_USER_EMAIL=;
+ARG WP_USER_PASSWORD=;
+
 # keeping the system up do date
 # update the list of available packages
 RUN apt-get update -y

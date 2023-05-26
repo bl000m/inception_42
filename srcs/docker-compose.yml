@@ -18,21 +18,6 @@ services:
       - inception
     restart: always
 
-# ................ wordpress ..................
-  wordpress:
-    build: ./requirements/wordpress
-    image: wordpress
-    container_name: wordpress
-    env_file:
-      - .env
-    volumes:
-      - wordpress:/var/www/html/wordpress
-    depends_on:
-      - mariadb
-    networks:
-      - inception
-    restart: always
-
 # ................ mariaDB ..................
   mariadb:
     build: 
@@ -51,6 +36,22 @@ services:
     networks:
       - inception
     restart: always
+    
+# ................ wordpress ..................
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
+
 
 # _______________ NETWORKS____________________
 

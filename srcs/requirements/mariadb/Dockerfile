@@ -1,9 +1,9 @@
 FROM debian:buster
 
-ARG DB_USER
-ARG DB_DATABASE
-ARG DB_USER_PASSWORD
-ARG DB_ROOT_PASSWORD
+ARG DB_USER=;
+ARG DB_DATABASE=;
+ARG DB_USER_PASSWORD=;
+ARG DB_ROOT_PASSWORD=;
 
 # keeping the system up to date
 RUN apt-get update -y && apt-get upgrade -y
@@ -32,6 +32,7 @@ RUN service mysql start \
     ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD'; \
     GRANT ALL PRIVILEGES ON $DB_DATABASE.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_USER_PASSWORD'; \
     FLUSH PRIVILEGES;"
+RUN service mysql stop
 
 # Copy the MariaDB configuration file
 COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
@@ -39,6 +40,6 @@ COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 # Expose the default MariaDB port
 EXPOSE 3306
 
-# Install dumb-init as a process supervisor
-RUN apt-get install dumb-init -y
-
+# # Install dumb-init as a process supervisor
+# RUN apt-get install dumb-init -y
+CMD ["mysqld", "--bind-address=0.0.0.0"]
