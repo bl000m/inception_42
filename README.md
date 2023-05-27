@@ -2,9 +2,15 @@
 <p align="center">
 	<img src="https://github.com/bl000m/inception_42/blob/main/vb_icon.png" width="200">
 </p>
-To set up a virtual machine, follow these steps:
+## The 3 laws in creating the virtual machine at the time I write this (may 2023) when there are multiple problems with machines freezing due to the switch from macos to linux: 
+* Be generous in setting up the hard disk (20 G at least)
+* don't make partitions
+* no LVM 
+* <br>
+* 
+## Once created the virtual machine, follow these steps for it to be a playground for this project:
 
-1. Log in to the virtual machine using the command: `su -l`
+1. `su -l`
 2. Add the user to the sudo group: `adduser login sudo`
 3. Switch to the newly added user: `sudo su login`
 4. Update the package list: `sudo apt update`
