@@ -17,7 +17,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
  
 ## Once created the virtual machine, follow these steps for it to be a playground for this project:
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/shell.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/shell2.png" width="200">
 </p>
 <br>
 
