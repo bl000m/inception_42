@@ -38,11 +38,16 @@ When setting up a virtual machine, particularly if you're working on Inception d
 14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
 <br>
 
-## Installation Process for Docker Engine
+## Installation Process for Docker Engine + client
 <p align="center">
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 <br>
+
+### NB
+* The following installation process includes both Docker Server (Docker Engine) and Docker Client. 
+	* Docker Engine is responsible for running and managing Docker containers on the server
+	* Docker Client is used to interact with the Docker Server and execute commands.
 
 ### Uninstall old versions:
 
