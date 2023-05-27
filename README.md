@@ -69,4 +69,5 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ## Sources: a video playlist
-https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh
+[![Image Description](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)]([link_url](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh))
+
