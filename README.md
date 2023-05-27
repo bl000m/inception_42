@@ -1,6 +1,6 @@
 # Virtual machine set up
 <p align="center">
-	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/vb_icon.png" width="200">
 </p>
 To set up a virtual machine, follow these steps:
 
