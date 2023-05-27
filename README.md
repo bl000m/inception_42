@@ -68,32 +68,49 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
 <br>
 
-## Key concepts
-
-* Dockerfile: blueprint to create an image
-* Image: a template with all needed to create a Container (each image specific to an architecture)
-* Container: a process
+## Key Concepts
+* Dockerfile: A blueprint used to create an image.
+* Image: A template that contains all the necessary components to create a container. Each image is specific to an architecture.
+* Container: An isolated process running on a host.
+<br>
 
 ### Dockerfile
+* Characteristics:
+	* No indentation.
+	* Instructions written in uppercase.
+	* Escape character: \
+<br>
 
-* characteristics:
-	* no indentation
-	* INSTRUCTIONS uppercase
-	* escape: \
-* instructions:
-	* FROM
-	* WORKDIR => instructions following this will be executed in the directory specified by WORKDIR
-	* ARG
-	* ENV
-	* USER => set the user that is meant execute the following instructions and the final process (it's not to be ROOT)
-	* ADD => ADD to the image local or remote files (via curl), flag --chown to change the owner of the file added
-	* COPY => like ADD but no allowing to download remote files
-	* RUN => lanching all shell commands, using caches, creating layers (each RUN is a different layer)
-	* CMD => define the main process to be launched, in a listed form: Ex: CMD ["python3", "-m", "flask", "run"]
-* 3 parts:
+* Consists of three parts:
 	* Starting image (FROM)
-	* instructions
-	* last line (RUN or ENTRYPOINT) => to launch the process or the processes to pe supervised
+	* Instructions
+	* Last line (RUN or ENTRYPOINT) used to launch the process(es) or supervise them.
+<br>
+* Instructions:
+	* FROM: Specifies the base image.
+	* WORKDIR: Sets the working directory for subsequent instructions.
+	* ARG: Defines variables that users can pass at build-time to the builder.
+	* ENV: Sets environment variables.
+	* USER: Sets the user to execute the following instructions and the final process (should not be ROOT).
+	* ADD: Adds local or remote files to the image (via curl). The --chown flag can be used to change the owner of the added file.
+	* COPY: Similar to ADD, but does not allow downloading remote files.
+	* RUN: Executes shell commands, utilizes caches, and creates layers (each RUN instruction adds a different layer).
+	* CMD: Defines the main process to be launched. It is typically specified in a list format. For example: CMD ["python3", "-m", "flask", "run"]
+	* ENTRYPOINT: Similar to CMD. Note that using CMD and ENTRYPOINT together can be dangerous.
+	* LABEL: Defines and injects metadata (a collection of key-value pairs). This can be inspected using the "docker image inspect" command.
+	* EXPOSE: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
+<br>
+
+* Image handling in the shell (commands to build, run, and inspect images):
+	* docker build -t image_name:tag_name .: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
+	* `docker images`: Lists the available images.
+	* `docker run -d --name container_name image_name:tag_name`: Creates a container (process) with the specified container_name using the specified image.
+	* `docker ps`: Checks if the container is running.
+	* `docker logs container_name`: Displays the logs of the specified container.
+	* `docker image inspect image_name:tag_name`: Inspects the metadata of the specified image.
+	* `docker exec -it container_name bash`: Opens an interactive bash session within the specified container.
+	* Once inside the container's bash shell, running the command `env` will display the set environment variables.
+<br>
 
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
