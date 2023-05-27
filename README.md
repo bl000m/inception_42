@@ -18,11 +18,13 @@ To set up a virtual machine, follow these steps:
 13. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
 14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
 <br>
+
 ## Installation Process for Docker Engine
 <p align="center">
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 <br>
+
 ### Uninstall old versions:
 
 * `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
