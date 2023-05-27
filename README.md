@@ -23,12 +23,12 @@ To set up a virtual machine, follow these steps:
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 
-Uninstall old versions:
+* Uninstall old versions:
 
 `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
 
 
-Set up the Docker repository:
+* Set up the Docker repository:
 
 `sudo apt-get update`: Updates the apt package index.
 
@@ -43,7 +43,7 @@ Set up the Docker repository:
 `echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
 
 
-Install Docker Engine:
+* Install Docker Engine:
 
 `sudo apt-get update`: Updates the apt package index.
 
