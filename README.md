@@ -1,4 +1,4 @@
-# Virtual machine set up
+<span style="color:#008080"># Virtual machine set up</span>
 
 To set up a virtual machine, follow these steps:
 
@@ -17,19 +17,18 @@ To set up a virtual machine, follow these steps:
 12. Install Make: `sudo apt-get install make`
 13. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
 14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
-15. Install Docker server (docker engine) + Docker client following the steps below.  Docker Engine is responsible for running and managing Docker containers on the server, while Docker Client is used to interact with the Docker Server and execute commands.
 
-## Installation Process for Docker Engine
+## <span style="color:#008080">Installation Process for Docker Engine</span>
 <p align="center">
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 
-### Uninstall old versions:
+### <span style="color:#008080">Uninstall old versions:</span>
 
 `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
 
 
-### Set up the Docker repository:
+### <span style="color:#008080">Set up the Docker repository:</span>
 
 `sudo apt-get update`: Updates the apt package index.
 
@@ -44,7 +43,7 @@ To set up a virtual machine, follow these steps:
 `echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
 
 
-### Install Docker Engine:
+### <span style="color:#008080">Install Docker Engine:</span>
 
 `sudo apt-get update`: Updates the apt package index.
 
