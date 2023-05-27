@@ -62,6 +62,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* Docker leverages the capabilities provided by the Linux kernel, such as namespaces and control groups (cgroups), to isolate and manage containers. Namespaces allow Docker to create isolated environments for processes, such as network, filesystem, and process namespaces. Cgroups ensure resource allocation and utilization control for containers.
 <br>
 
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="200">
+</p>
+<br>
+
 ### Uninstall old versions:
 
 * `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
