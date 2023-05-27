@@ -86,6 +86,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* Instructions
 	* Last line (RUN or ENTRYPOINT) used to launch the process(es) or supervise them.
 <br>
+
 * Instructions:
 	* FROM: Specifies the base image.
 	* WORKDIR: Sets the working directory for subsequent instructions.
