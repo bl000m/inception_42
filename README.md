@@ -68,26 +68,26 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
 <br>
 
-## Key Concepts
+## **Key Concepts**
 * Dockerfile: A blueprint used to create an image.
 * Image: A template that contains all the necessary components to create a container. Each image is specific to an architecture.
 * Container: An isolated process running on a host.
 <br>
 
 ### Dockerfile
-* Characteristics:
+* **Characteristics**:
 	* No indentation.
 	* Instructions written in uppercase.
 	* Escape character: \
 <br>
 
-* Consists of three parts:
+* **Consists of three parts**:
 	* Starting image (FROM)
 	* Instructions
 	* Last line (RUN or ENTRYPOINT) used to launch the process(es) or supervise them.
 <br>
 
-* Instructions:
+* **Instructions**:
 	* FROM: Specifies the base image.
 	* WORKDIR: Sets the working directory for subsequent instructions.
 	* ARG: Defines variables that users can pass at build-time to the builder.
@@ -102,7 +102,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* EXPOSE: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
 <br>
 
-* Image handling in the shell (commands to build, run, and inspect images):
+* **Image handling in the shell (commands to build, run, and inspect images)**:
 	* docker build -t image_name:tag_name .: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
 	* `docker images`: Lists the available images.
 	* `docker run -d --name container_name image_name:tag_name`: Creates a container (process) with the specified container_name using the specified image.
@@ -115,13 +115,13 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 
-* Layers:
-	* Each instruction in an image creates a layer. You can visualize all the layers created for an image using the docker history image_name:tag_name command.
+* **Layers**:
+	* Each instruction in an image creates a layer. You can visualize all the layers created for an image using the `docker history image_name:tag_name` command.
 	* If two images have the same instruction, they can share the related layer, resulting in resource optimization through caching. When downloading an image from a remote registry, Docker compares the layers of the remote repository with the ones stored on our machine. It avoids downloading layers that are already present locally.
 	* Each layer is read-only. When launching an image, Docker creates a copy-on-write layer. It assembles the read-only layers and creates a write layer on top of them, which becomes the container. This approach allows for efficient use of resources and faster container creation.
 <br>
 
-* Layers Good Practices:
+* **Good Practices**:
 	* Group similar instructions to reduce the number of layers and make the image size lighter. However, it's important to fragment them enough to allow different images to share the cache of common instructions. Finding a balance between these two considerations is crucial.
 	* Play with the order of instructions. Place the instructions that are less likely to change at the top of the Dockerfile and the more variable instructions towards the end. This can help optimize caching and improve build times.
 <br>
