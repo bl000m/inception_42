@@ -63,7 +63,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="500">
 </p>
 <br>
 
@@ -107,6 +107,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ### Dockerfile
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/dockerfile.jpeg" width="200">
+</p>
+<br>
+
 * **Characteristics**:
 	* No indentation.
 	* Instructions written in uppercase.
