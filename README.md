@@ -1,3 +1,13 @@
+# What is this project about?
+This project aims to create a LEMP stack using Docker Compose, which stands for Linux, Nginx, MariaDB, and PHP, and also includes WordPress.
+
+The LEMP stack is a popular web development environment that combines a Linux operating system, the Nginx web server, the MariaDB database server, and the PHP programming language. By using Docker Compose, we can define and manage the configuration of these services as a single unit, making it easier to set up and deploy the entire stack.
+
+In addition to the LEMP components, this project includes WordPress, a widely-used content management system (CMS) for building websites and blogs. By incorporating WordPress into the stack, we can leverage its powerful features and functionalities to develop dynamic web applications.
+
+Overall, the goal is to create an isolated and self-contained environment using Docker Compose that provides a complete LEMP stack with Nginx, MariaDB, PHP, and WordPress, enabling efficient development and testing of web applications.
+<br>
+
 # Virtual machine set up
 <p align="center">
 	<img src="https://github.com/bl000m/inception_42/blob/main/vb_icon.png" width="200">
