@@ -2,12 +2,19 @@
 <p align="center">
 	<img src="https://github.com/bl000m/inception_42/blob/main/vb_icon.png" width="200">
 </p>
-## The 3 laws in creating the virtual machine at the time I write this (may 2023) when there are multiple problems with machines freezing due to the switch from macos to linux: 
-* Be generous in setting up the hard disk (20 G at least)
-* don't make partitions
-* no LVM 
-* <br>
-* 
+<br>
+
+## Recommendations for Setting Up a Virtual Machine during the macOS to Linux Transition (42 School Machines)
+
+When setting up a virtual machine, particularly if you're working on Inception during the transition from macOS to Linux on the 42 School machines, it is strongly recommended to follow these guidelines to avoid potential issues caused by frequent machine freezing:
+
+* Allocate Sufficient Hard Disk Space: It is recommended to be generous with the hard disk allocation, allocating at least 20 GB or more. This ensures that you have enough space to install and run applications without running into storage constraints.
+
+* Avoid Partitioning: For simplicity and ease of management, it is advisable to avoid partitioning the virtual machine's hard disk. By keeping the disk as a single partition, it eliminates the complexity associated with managing multiple partitions.
+
+* Avoid Logical Volume Management (LVM): While testing Docker images and containers, it's crucial to avoid using LVM unless you have a clear understanding of how it works. Improper management of Docker images and containers, such as not stopping or removing them correctly, can lead to excessive disk usage. This can quickly saturate swap, home, or root partitions, resulting in performance issues or disk space shortages.
+<br>
+ 
 ## Once created the virtual machine, follow these steps for it to be a playground for this project:
 
 1. `su -l`
