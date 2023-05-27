@@ -113,6 +113,15 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* Once inside the container's bash shell, running the command `env` will display the set environment variables.
 <br>
 
+* layers
+	* each images's instruction create a layer
+	* if 2 images have the same instruction thay can share the related layer (optimisation resources) in the form of cache => wnhen downloading an image from a distant registry, docker compare the layers from remote repo with the ones stocked in our machine and not downloading already present in local machine layers.
+	* each layer is read-only. When launchin an image we launch a copy on write layer, assembling the read-only layers and creating a write layer at the top of them, that is the container
+<br>
+
+* layers good practices
+	* group similar instructions to have not that much layers (image size lighter)  but fragment them enough to allow different images to share the cache of common instructions => find a balance between the two.
+	* play with the instructions order, putting at the top the instructions less variable (example) and at the end the most variable
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
