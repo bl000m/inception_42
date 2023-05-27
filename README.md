@@ -16,6 +16,10 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
  
 ## Once created the virtual machine, follow these steps for it to be a playground for this project:
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/shell.png" width="200">
+</p>
+<br>
 
 1. `su -l`
 2. Add the user to the sudo group: `adduser login sudo`
