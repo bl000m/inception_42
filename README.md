@@ -1,6 +1,6 @@
-## Inception
+# Virtual machine set up
 
-To set up a virtual machine and perform various installations and configurations, follow these steps:
+To set up a virtual machine, follow these steps:
 
 1. Log in to the virtual machine using the command: `su -l`
 2. Add the user to the sudo group: `adduser login sudo`
@@ -17,6 +17,7 @@ To set up a virtual machine and perform various installations and configurations
 12. Install Make: `sudo apt-get install make`
 13. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
 14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
+15. Install Docker server (docker engine) + Docker client following the steps below.  Docker Engine is responsible for running and managing Docker containers on the server, while Docker Client is used to interact with the Docker Server and execute commands.
 
 ## Installation Process for Docker Engine
 1. Uninstall old versions:
