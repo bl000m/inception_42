@@ -8,7 +8,7 @@
 
 When setting up a virtual machine, particularly if you're working on Inception during the transition from macOS to Linux on the 42 School machines, it is strongly recommended to follow these guidelines to avoid potential issues caused by frequent machine freezing:
 
-* Allocate Sufficient Hard Disk Space: It is recommended to be generous with the hard disk allocation, allocating at least 20 GB or more. This ensures that you have enough space to install and run applications without running into storage constraints.
+* Allocate Sufficient Hard Disk Space: It is recommended to be generous with the hard disk allocation, allocating at least 20 GB in the `sgoinfre` directory. This ensures that you have enough space to install and run applications without running into storage constraints.
 
 * Avoid Partitioning: For simplicity and ease of management, it is advisable to avoid partitioning the virtual machine's hard disk. By keeping the disk as a single partition, it eliminates the complexity associated with managing multiple partitions.
 
@@ -87,6 +87,9 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* ENV
 	* USER => set the user that is meant execute the following instructions and the final process (it's not to be ROOT)
 	* ADD => ADD to the image local or remote files (via curl), flag --chown to change the owner of the file added
+	* COPY => like ADD but no allowing to download remote files
+	* RUN => lanching all shell commands, using caches, creating layers (each RUN is a different layer)
+	* CMD => define the main process to be launched, in a listed form: Ex: CMD ["python3", "-m", "flask", "run"]
 * 3 parts:
 	* Starting image (FROM)
 	* instructions
