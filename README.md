@@ -90,6 +90,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
 <br>
 
+### Install Docker Compose:
+* `sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+* `sudo chmod +x /usr/local/bin/docker-compose`
+* `docker-compose --version` => check if installed
+
 ## **Key Concepts**
 <p align="center">
 	<img src="https://github.com/bl000m/inception_42/blob/main/concepts.png" width="200">
