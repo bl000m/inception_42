@@ -134,11 +134,6 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* EXPOSE: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
 <br>
 
-<p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/servlet.jpeg" width="500">
-</p>
-<br>
-
 * **Image/container handling in the shell (commands to build, run, and inspect images)**:
 	* docker build -t image_name:tag_name .: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
 	* `docker images`: Lists the available images.
@@ -152,7 +147,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/container%20layer.jpg" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/servlet.jpeg" width="500">
 </p>
 <br>
 
@@ -163,15 +158,20 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/how-docker-cache-works.png" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/container%20layer.jpg" width="500">
 </p>
 <br>
+
 
 * **Good Practices**:
 	* Group similar instructions to reduce the number of layers and make the image size lighter. However, it's important to fragment them enough to allow different images to share the cache of common instructions. Finding a balance between these two considerations is crucial.
 	* Play with the order of instructions. Place the instructions that are less likely to change at the top of the Dockerfile and the more variable instructions towards the end. This can help optimize caching and improve build times.
 <br>
 
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/how-docker-cache-works.png" width="500">
+</p>
+<br>
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
