@@ -109,19 +109,23 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* `docker ps`: Checks if the container is running.
 	* `docker logs container_name`: Displays the logs of the specified container.
 	* `docker image inspect image_name:tag_name`: Inspects the metadata of the specified image.
+	* `docker history image_name:tag_name` => to visualize all the layers created
 	* `docker exec -it container_name bash`: Opens an interactive bash session within the specified container.
 	* Once inside the container's bash shell, running the command `env` will display the set environment variables.
 <br>
 
-* layers
-	* each images's instruction create a layer
-	* if 2 images have the same instruction thay can share the related layer (optimisation resources) in the form of cache => wnhen downloading an image from a distant registry, docker compare the layers from remote repo with the ones stocked in our machine and not downloading already present in local machine layers.
-	* each layer is read-only. When launchin an image we launch a copy on write layer, assembling the read-only layers and creating a write layer at the top of them, that is the container
+
+* Layers:
+	* Each instruction in an image creates a layer. You can visualize all the layers created for an image using the docker history image_name:tag_name command.
+	* If two images have the same instruction, they can share the related layer, resulting in resource optimization through caching. When downloading an image from a remote registry, Docker compares the layers of the remote repository with the ones stored on our machine. It avoids downloading layers that are already present locally.
+	* Each layer is read-only. When launching an image, Docker creates a copy-on-write layer. It assembles the read-only layers and creates a write layer on top of them, which becomes the container. This approach allows for efficient use of resources and faster container creation.
 <br>
 
-* layers good practices
-	* group similar instructions to have not that much layers (image size lighter)  but fragment them enough to allow different images to share the cache of common instructions => find a balance between the two.
-	* play with the instructions order, putting at the top the instructions less variable (example) and at the end the most variable
+* Layers Good Practices:
+	* Group similar instructions to reduce the number of layers and make the image size lighter. However, it's important to fragment them enough to allow different images to share the cache of common instructions. Finding a balance between these two considerations is crucial.
+	* Play with the order of instructions. Place the instructions that are less likely to change at the top of the Dockerfile and the more variable instructions towards the end. This can help optimize caching and improve build times.
+<br>
+
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
