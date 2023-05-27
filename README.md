@@ -40,7 +40,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 
 ## Installation Process for Docker Engine + client
 <p align="center">
-	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="500">
 </p>
 <br>
 
@@ -60,11 +60,6 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * The KERNEL role
 	* The kernel provides the underlying mechanisms for container isolation and resource management, allowing Docker to function efficiently and securely.
 	* Docker leverages the capabilities provided by the Linux kernel, such as namespaces and control groups (cgroups), to isolate and manage containers. Namespaces allow Docker to create isolated environments for processes, such as network, filesystem, and process namespaces. Cgroups ensure resource allocation and utilization control for containers.
-<br>
-
-<p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="500">
-</p>
 <br>
 
 ### Uninstall old versions:
@@ -107,7 +102,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ### Dockerfile
-<p align="center">
+<p align="left">
 	<img src="https://github.com/bl000m/inception_42/blob/main/dockerfile.jpeg" width="200">
 </p>
 <br>
@@ -140,7 +135,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/docker_architecture.png" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/servlet.jpeg" width="500">
 </p>
 <br>
 
@@ -156,11 +151,20 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* Once inside the container's bash shell, running the command `env` will display the set environment variables.
 <br>
 
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/container%20layer.jpg" width="500">
+</p>
+<br>
 
 * **Layers**:
 	* Each instruction in an image creates a layer. You can visualize all the layers created for an image using the `docker history image_name:tag_name` command.
 	* If two images have the same instruction, they can share the related layer, resulting in resource optimization through caching. When downloading an image from a remote registry, Docker compares the layers of the remote repository with the ones stored on our machine. It avoids downloading layers that are already present locally.
 	* Each layer is read-only. When launching an image, Docker creates a copy-on-write layer. It assembles the read-only layers and creates a write layer on top of them, which becomes the container. This approach allows for efficient use of resources and faster container creation.
+<br>
+
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/how-docker-cache-works.png" width="500">
+</p>
 <br>
 
 * **Good Practices**:
