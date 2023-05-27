@@ -1,5 +1,7 @@
 # Virtual machine set up
-
+<p align="center">
+	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
+</p>
 To set up a virtual machine, follow these steps:
 
 1. Log in to the virtual machine using the command: `su -l`
