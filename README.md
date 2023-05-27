@@ -66,4 +66,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo apt-get update`: Updates the apt package index.
 
 * `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
-* <br>
+<br>
+
+## Sources: a video playlist
+https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh
