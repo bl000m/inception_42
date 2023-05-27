@@ -68,6 +68,31 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
 <br>
 
+## Key concepts
+
+* Dockerfile: blueprint to create an image
+* Image: a template with all needed to create a Container (each image specific to an architecture)
+* Container: a process
+
+### Dockerfile
+
+* characteristics:
+	* no indentation
+	* INSTRUCTIONS uppercase
+	* escape: \
+* instructions:
+	* FROM
+	* WORKDIR => instructions following this will be executed in the directory specified by WORKDIR
+	* ARG
+	* ENV
+	* USER => set the user that is meant execute the following instructions and the final process (it's not to be ROOT)
+	* ADD => ADD to the image local or remote files (via curl), flag --chown to change the owner of the file added
+* 3 parts:
+	* Starting image (FROM)
+	* instructions
+	* last line (RUN or ENTRYPOINT) => to launch the process or the processes to pe supervised
+
+
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
 
