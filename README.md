@@ -45,6 +45,7 @@ To set up a virtual machine, follow these steps:
 * `echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
 
 <br>
+
 ### Install Docker Engine:
 
 * `sudo apt-get update`: Updates the apt package index.
