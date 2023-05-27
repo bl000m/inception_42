@@ -139,7 +139,12 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* EXPOSE: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
 <br>
 
-* **Image handling in the shell (commands to build, run, and inspect images)**:
+* **Image/container handling in the shell (commands to build, run, and inspect images)**:
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/docker_architecture.png" width="500">
+</p>
+<br>
+
 	* docker build -t image_name:tag_name .: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
 	* `docker images`: Lists the available images.
 	* `docker run -d --name container_name image_name:tag_name`: Creates a container (process) with the specified container_name using the specified image.
