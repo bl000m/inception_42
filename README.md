@@ -23,28 +23,28 @@ To set up a virtual machine, follow these steps:
 	<img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="200">
 </p>
 
-* Uninstall old versions:
+### Uninstall old versions:
 
-`sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
-
-
-* Set up the Docker repository:
-
-`sudo apt-get update`: Updates the apt package index.
-
-`sudo apt-get install ca-certificates curl gnupg`: Installs necessary packages.
-
-`sudo install -m 0755 -d /etc/apt/keyrings`: Creates a directory for the GPG key.
-
-`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`: Adds Docker's GPG key.
-
-`sudo chmod a+r /etc/apt/keyrings/docker.gpg`: Changes permissions for the GPG key.
-
-`echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
+* `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
 
 
-* Install Docker Engine:
+### Set up the Docker repository:
 
-`sudo apt-get update`: Updates the apt package index.
+* `sudo apt-get update`: Updates the apt package index.
 
-`sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
+* `sudo apt-get install ca-certificates curl gnupg`: Installs necessary packages.
+
+* `sudo install -m 0755 -d /etc/apt/keyrings`: Creates a directory for the GPG key.
+
+* `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`: Adds Docker's GPG key.
+
+* `sudo chmod a+r /etc/apt/keyrings/docker.gpg`: Changes permissions for the GPG key.
+
+* `echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
+
+
+### Install Docker Engine:
+
+* `sudo apt-get update`: Updates the apt package index.
+
+* `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`: Installs Docker Engine, containerd, and Docker Compose.
