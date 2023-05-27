@@ -78,6 +78,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ## **Key Concepts**
+<p align="center">
+	<img src="https://github.com/bl000m/inception_42/blob/main/concepts.png" width="200">
+</p>
+<br>
+
 * Dockerfile: A blueprint used to create an image.
 * Image: A template that contains all the necessary components to create a container. Each image is specific to an architecture.
 * Container: An isolated process running on a host.
