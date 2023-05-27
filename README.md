@@ -26,7 +26,7 @@ To set up a virtual machine, follow these steps:
 ### Uninstall old versions:
 
 * `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
-
+<br>
 
 ### Set up the Docker repository:
 
