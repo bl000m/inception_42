@@ -10,7 +10,7 @@ Overall, the goal is to create an isolated and self-contained environment using 
 
 # Virtual machine set up
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/vb_icon.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/vb_icon.png" width="200">
 </p>
 <br>
 
@@ -27,7 +27,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
  
 ## Once created the virtual machine, follow these steps for it to be a playground for this project:
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/shell2.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/shell2.png" width="200">
 </p>
 <br>
 
@@ -50,7 +50,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 
 ## Installation Process for Docker Engine + client
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/Docker-services.jpg" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/Docker-services.jpg" width="500">
 </p>
 <br>
 
@@ -107,7 +107,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 
 ## **Key Concepts**
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/concepts.png" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/concepts.png" width="200">
 </p>
 <br>
 
@@ -118,7 +118,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 
 ### Dockerfile
 <p align="left">
-	<img src="https://github.com/bl000m/inception_42/blob/main/dockerfile.jpeg" width="200">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/dockerfile.jpeg" width="200">
 </p>
 <br>
 
@@ -162,7 +162,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/servlet.jpeg" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/servlet.jpeg" width="500">
 </p>
 <br>
 
@@ -173,7 +173,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/container%20layer.jpg" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/container%20layer.jpg" width="500">
 </p>
 <br>
 
@@ -184,7 +184,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/how-docker-cache-works.png" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/how-docker-cache-works.png" width="500">
 </p>
 <br>
 
@@ -198,7 +198,7 @@ As soon as docker-compose finds the value for the environment variables set in d
 
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
-[![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
+[![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
 
 <br>
 
