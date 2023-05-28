@@ -188,8 +188,14 @@ When setting up a virtual machine, particularly if you're working on Inception d
 </p>
 <br>
 
+* Docker-compose
+	* When you run the docker-compose up command, the docker-compose.yml file looks for the values of the environment variables in the .env file. The docker-compose command automatically looks for a .env file in the project directory or in the parent folder of your compose file.
+
+As soon as docker-compose finds the value for the environment variables set in docker-compose.yml in the .env file, Compose substitutes the values accordingly and starts the service. Staring the service creates the container defined in the docker-compose.yml file.
+
 * Troubleshooting
 	* `sudo systemctl restart docker.socket docker.service` => if cannot stop or restart a container
+
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
