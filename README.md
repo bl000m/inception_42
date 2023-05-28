@@ -188,6 +188,9 @@ When setting up a virtual machine, particularly if you're working on Inception d
 </p>
 <br>
 
+* Troubleshooting
+	* `sudo systemctl restart docker.socket docker.service` => if cannot stop or restart a container
+
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
 
