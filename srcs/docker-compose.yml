@@ -1,18 +1,22 @@
 version: '3'
 services:
 
+# ................ nginx ..................
+
   nginx:
     build: requirements/nginx/
     container_name: nginx
     ports:
       - "443:443"
     volumes:
-      - "~/Desktop/inception/website:/var/www/html"
+      - wordpress:/var/www/html/wordpress
     depends_on:
       - wordpress
     networks:
-      - frontend
+      - inception
     restart: always
+
+# ................ wordpress ..................
 
   wordpress:
     build: requirements/wordpress/
@@ -20,12 +24,11 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - "~/Desktop/inception/website:/var/www/html"
+      - wordpress:/var/www/html/wordpress
     depends_on:
       - mariadb
     networks:
-      - frontend
-      - backend
+      - inception
     restart: always
     environment:
       MYSQL_HOST:       ${MYSQL_HOST}
@@ -41,15 +44,17 @@ services:
       WP_PWD:           ${WP_PWD}
       WP_EMAIL:         ${WP_EMAIL}
 
+# ................ mariaDB ..................
+
   mariadb:
     build: requirements/mariadb/
     container_name: mariadb
     ports:
       - "3306:3306"
     volumes:
-      - "~/Desktop/inception/mariadb:/var/lib/mysql"
+      - mariadb:/var/lib/mysql
     networks:
-      - backend
+      - inception
     restart: always
     environment:
       MYSQL_ROOT_PWD:   ${MYSQL_ROOT_PWD}
@@ -58,6 +63,31 @@ services:
       WP_DATABASE_PWD:  ${WP_DATABASE_PWD}
     
   
+# _______________ NETWORKS____________________
+
 networks:
-  frontend:
-  backend:
+
+  inception:
+    driver: bridge
+    name: inception
+
+# _________________ VOLUMES __________________
+
+volumes:
+
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mpagani/data/wordpress
+  
+  mariadb:
+    driver: local
+    name: mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mpagani/data/mariadb
+

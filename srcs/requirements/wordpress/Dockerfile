@@ -4,7 +4,6 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y curl less php php-fpm php-mysql php-mysqli mariadb-client
 
-
 # php config
 RUN adduser --system nginx && \
     addgroup --system nginx
