@@ -8,7 +8,7 @@ done
 # if [ ! -f "/var/www/html/index.html" ]; then
 
     # static website
-    mv /tmp/index.html /var/www/html/index.html
+    # mv /tmp/index.html /var/www/html/index.html
 
     wp core download --allow-root
     wp config create --dbname=$WP_DATABASE_NAME --dbuser=$WP_DATABASE_USR --dbpass=$WP_DATABASE_PWD --dbhost=$MYSQL_HOST --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root

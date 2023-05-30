@@ -10,8 +10,8 @@ RUN adduser --system nginx && \
 COPY conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
 
-# static website
-COPY conf/index.html /tmp/index.html
+# # static website
+# COPY conf/index.html /tmp/index.html
 RUN apt-get update \
     && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*

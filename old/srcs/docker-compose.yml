@@ -1,0 +1,96 @@
+version: '3'
+# ________________ SERVICES ___________________
+
+services:
+
+# ................ nginx ..................
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    image: nginx
+    container_name: nginx
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
+
+# ................ mariaDB ..................
+  mariadb:
+    build: 
+      context: ./requirements/mariadb
+      args:
+          - DB_DATABASE
+          - DB_USER
+          - DB_USER_PASSWORD
+          - DB_ROOT_PASSWORD
+    image: mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+    
+# ................ wordpress ..................
+  wordpress:
+    build: 
+      context: ./requirements/wordpress
+      args:
+        - DB_DATABASE
+        - DB_USER
+        - DB_USER_PASSWORD
+        - DB_HOST
+        - DOMAIN_NAME
+        - WP_SITE_TITLE
+        - WP_ADMIN
+        - WP_ADMIN_EMAIL
+        - WP_ADMIN_PASSWORD
+        - WP_USER
+        - WP_USER_EMAIL
+        - WP_USER_PASSWORD
+    image: wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
+
+
+# _______________ NETWORKS____________________
+
+networks:
+
+  inception:
+    driver: bridge
+    # name: inception
+
+# _________________ VOLUMES __________________
+
+volumes:
+
+  wordpress:
+    driver: local
+    # name: wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mpagani/data/wordpress
+  
+  mariadb:
+    driver: local
+    # name: mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mpagani/data/mariadb
