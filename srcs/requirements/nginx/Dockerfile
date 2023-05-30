@@ -20,17 +20,15 @@ RUN openssl req -x509 -newkey rsa:2048 -nodes -subj /C=FR -keyout /etc/ssl/mpaga
 COPY /conf/nginx.conf /etc/nginx/sites-available/mpagani.42.fr.conf
 RUN ln -s /etc/nginx/sites-available/mpagani.42.fr.conf /etc/nginx/sites-enabled/mpagani.42.fr.conf
 
-# Port 443
 EXPOSE 443
 
-# Install DUMB-INIT
+
 # dumb-init runs as PID 1, acting like a simple init system.
-# It launches a single process and then proxies all received signals to a session rooted at that child process.
 RUN apt-get install -y dumb-init
 
 # CMD command will be passed as argument to ENTRYPOINT
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-# -g flag -> set global directive or variables
-# daemon off directive -> NGINX stay in the foreground
+# -g flag -> global
+# daemon off -> background
 CMD ["nginx", "-g", "daemon off;"]

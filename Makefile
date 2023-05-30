@@ -3,62 +3,62 @@ DOCKER_COMPOSE := docker-compose -f srcs/docker-compose.yml
 # -f = specify the location of the compose file
 
 
-# define standard colors
-_END			:=	\033[0m
-_GREEN			:=	\033[32m
+# colors
+_BACK			:=	\e[0m]
+_YELLOW			:=	\e[1;32]
 
 all: up
 
 up:
-	@echo "$(_GREEN) Rebuild and start all the containers in detached mode$(_END)"
+	@echo "$(_YELLOW) Rebuild and start all the containers in detached mode$(_BACK)"
 	${DOCKER_COMPOSE} up -d --build
-# -d = run the containers in the background (terminal is still usable while running)
-# --build = force to rebuild the images of the services
 
 build:
-	@echo "$(_GREEN)Build images$(_END)"
+	@echo "$(_YELLOW)Build images$(_BACK)"
 	$(DOCKER_COMPOSE) build
 
 start:
-	@echo "$(_GREEN)Start containers$(_END)"
+	@echo "$(_YELLOW)Start containers$(_BACK)"
 	$(DOCKER_COMPOSE) start
 
 restart:
-	@echo "$(_GREEN)Restart containers$(_END)"
+	@echo "$(_YELLOW)Restart containers$(_BACK)"
 	$(DOCKER_COMPOSE) restart
 
 stop:
-	@echo "$(_GREEN)Stop containers$(_END)"
+	@echo "$(_YELLOW)Stop containers$(_BACK)"
 	$(DOCKER_COMPOSE) stop
 
 down:
-	@echo "$(_GREEN)Stop and remove containers, volumes and networks$(_END)"
+	@echo "$(_YELLOW)Stop and remove containers, volumes and networks$(_BACK)"
 	$(DOCKER_COMPOSE) down --rmi all --volumes --remove-orphans
-# --rmi all = remove all images associated with the services
-# --volumes = remove any volume
-# --remove-orphans = remove any container unused by docker-compose file
+# --rmi all = rm(remove) all i(images)
 
-ls:
-	@echo "$(_GREEN)------------------------List running containers-------------------------$(_END)"
+containers:
+	@echo "$(_YELLOW)List running containers$(_BACK)"
 	$(DOCKER_COMPOSE) ps
-	@echo "$(_GREEN)------------------------------List images-------------------------------$(_END)"
+
+images:
+	@echo "$(_YELLOW)List images-$(_BACK)"
 	docker images
-	@echo "$(_GREEN)------------------------------List volumes------------------------------$(_END)"
+
+volumes:
+	@echo "$(_YELLOW)List volumes$(_BACK)"
 	docker volume ls
 
 clean: down
 
 fclean: clean
-	@echo "$(_GREEN)Removes images, containers and volumes$(_END)"
+	@echo "$(_YELLOW)Removes images, containers and volumes$(_BACK)"
 	sudo rm -rf /home/$(USER)/data/wordpress/*
 	sudo rm -rf /home/$(USER)/data/mysql/*
 
 prune: fclean
-	@echo "$(_GREEN)Removes all unused images, containers, networks and volumes$(_END)"
+	@echo "$(_YELLOW)Removes all unused images, containers, networks and volumes$(_BACK)"
 	sudo docker system prune -f -a
-# -f = force the removal without confirmation
-# -a = remove all objects including unused
+# -a = all
+# -f = force
 
 re: fclean all
 
-.PHONY: all build up start restart stop down ls clean fclean prune re
+.PHONY: all build up start restart stop down containers images volumes clean fclean prune re
