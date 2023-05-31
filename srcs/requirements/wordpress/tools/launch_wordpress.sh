@@ -1,10 +1,9 @@
 #!/bin/sh
 
+# static website
+mv /tmp/index.html /var/www/html/wordpress/index.html
+
 # Change directory to where the WordPress file will be downloaded
-
-# # static website
-# mv /tmp/index.html /var/www/html/wordpress/index.html
-
 cd /var/www/html/wordpress
 
 wp core download --path="/var/www/html/wordpress" --allow-root
@@ -33,7 +32,6 @@ wp config set WP_REDIS_HOST redis --allow-root
 # ----------
 
 # LAUNCH PHP-FPM
-=======
 mkdir -p /run/php/
 # LAUNCH PHP-FPM
 php-fpm7.3 -F

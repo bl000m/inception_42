@@ -25,8 +25,8 @@ RUN apt-get install -y \
     redis \
 	php-redis
 
-# # static website
-# COPY conf/index.html /tmp/index.html
+# static website
+COPY conf/index.html /tmp/index.html
 
 # Create wordpress installation directory
 RUN mkdir -p /var/www/html/wordpress

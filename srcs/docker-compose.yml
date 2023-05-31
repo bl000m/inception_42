@@ -1,5 +1,10 @@
 version: '3.7'
 
+
+# memo: checking this l=instruction in nginx.conf: location / {
+#     try_files $uri $uri/ /index.html;
+#     }
+
 # sudo lsof -i :6589
 # sudo lsof -i :443 -> nginx
 # sudo lsof -i :6379 -> redis
@@ -10,7 +15,6 @@ version: '3.7'
 # cAdvisors: http://mpagani.42.fr:8080/containers/
 # adminer: https://mpagani.42.fr/adminer
 # redis: enter the redis container and type "redis-cli -h localhost", than "ping". If ansers is PONG server is running.
-=======
 # ////////////////////////// SERVICES \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 services:
@@ -129,7 +133,6 @@ services:
 # bridge: default network driver used by docker
 # creates a private network for the containers
 # containers can communicate between each others but they are isolated from external network
-=======
 
 # ////////////////////////// NETWORKS \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -154,7 +157,7 @@ volumes:
     name: wordpress
     driver_opts:
       type: none
-      device: /home/mathia/data/wordpress
+      device: /home/mpagani/data/wordpress
       o: bind
       
   mariadb:
@@ -162,5 +165,5 @@ volumes:
     name: mariadb
     driver_opts:
       type: none
-      device: /home/mathia/data/mysql
+      device: /home/mpagani/data/mysql
       o: bind
