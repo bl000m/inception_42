@@ -1,5 +1,16 @@
 version: '3.7'
 
+# sudo lsof -i :6589
+# sudo lsof -i :443 -> nginx
+# sudo lsof -i :6379 -> redis
+# sudo lsof -i :21100-21110 -> ftp server
+# sudo lsof -i :9000
+
+
+# cAdvisors: http://mpagani.42.fr:8080/containers/
+# adminer: https://mpagani.42.fr/adminer
+# redis: enter the redis container and type "redis-cli -h localhost", than "ping". If ansers is PONG server is running.
+
 services:
   nginx:
     build:
@@ -61,6 +72,67 @@ services:
       - inception
     restart: always
 
+  #BONUS PART
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+
+  ftp-server:
+    build: 
+      context: requirements/bonus/ftp_server
+      args:
+        FTP_USR: ${FTP_USR}
+        FTP_PWD: ${FTP_PWD}
+    container_name: ftp-server
+    depends_on:
+      - wordpress
+    ports:
+      - "21:21"
+      # - "20:20"
+      # - "21100-21110:21100-21110"
+    volumes:
+      - wordpress:/var/www
+    networks:
+      - inception
+    restart: always
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    restart: always
+    depends_on:
+      - mariadb
+    expose:
+     - "9000"
+    networks:
+      - inception
+
+  cadvisor:
+    container_name: cadvisor
+    build: ./requirements/bonus/cadvisor/.
+    image: cadvisor
+    ports:
+      - "8080:8080"
+      - "9443:9443"
+    networks:
+      - inception
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
+
 # bridge: default network driver used by docker
 # creates a private network for the containers
 # containers can communicate between each others but they are isolated from external network
@@ -80,12 +152,12 @@ volumes:
     name: wordpress
     driver_opts:
       type: none
-      device: /home/mpagani/data/wordpress
+      device: /home/mathia/data/wordpress
       o: bind
   mariadb:
     driver: local
     name: mariadb
     driver_opts:
       type: none
-      device: /home/mpagani/data/mysql
+      device: /home/mathia/data/mysql
       o: bind
