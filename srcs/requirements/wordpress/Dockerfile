@@ -21,6 +21,12 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 &&		chmod +x wp-cli.phar \
 &&		mv wp-cli.phar /usr/local/bin/wp
 
+RUN apt-get install -y \
+    redis \
+	php-redis
+
+# # static website
+# COPY conf/index.html /tmp/index.html
 
 # Create wordpress installation directory
 RUN mkdir -p /var/www/html/wordpress

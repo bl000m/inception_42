@@ -1,6 +1,10 @@
 #!/bin/sh
 
 # Change directory to where the WordPress file will be downloaded
+
+# # static website
+# mv /tmp/index.html /var/www/html/wordpress/index.html
+
 cd /var/www/html/wordpress
 
 wp core download --path="/var/www/html/wordpress" --allow-root
@@ -17,6 +21,19 @@ mkdir -p /var/www/html/wordpress/wp-content/uploads
 
 chown www-data:www-data /var/www/html/wordpress/wp-content/uploads -R
 
+# ---------redis--------
+wp config set WP_REDIS_HOST redis --allow-root 
+  	wp config set WP_REDIS_PORT 6379 --raw --allow-root
+ 	wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root
+  	wp config set WP_REDIS_PASSWORD $REDIS_PASSWORD --allow-root
+ 	wp config set WP_REDIS_CLIENT phpredis --allow-root
+	wp plugin install redis-cache --activate --allow-root
+    wp plugin update --all --allow-root
+	wp redis enable --allow-root
+# ----------
+
+# LAUNCH PHP-FPM
+=======
 mkdir -p /run/php/
 # LAUNCH PHP-FPM
 php-fpm7.3 -F
