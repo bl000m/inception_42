@@ -1,0 +1,162 @@
+version: '3.7'
+
+# sudo lsof -i :6589
+# sudo lsof -i :443 -> nginx
+# sudo lsof -i :6379 -> redis
+# sudo lsof -i :21100-21110 -> ftp server
+# sudo lsof -i :9000
+
+
+# cAdvisors: localhost:8080/containers/
+# adminer: https://mpagani.42.fr/adminer
+# redis: enter the redis container and type "redis-cli -h localhost", than "ping". If ansers is PONG server is running.
+
+# ////////////////////////// SERVICES \\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+services:
+# --------------------------- nginx ---------------------------
+  nginx:
+    build:
+      context: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - 443:443
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
+
+# --------------------------- wordpress ---------------------------
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
+
+# --------------------------- mariadb ---------------------------
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      args:
+        DB_DATABASE: ${DB_DATABASE}
+        DB_USER: ${DB_USER}
+        DB_USER_PASSWORD: ${DB_USER_PASSWORD}
+        DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    image: mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+
+  #BONUS PART
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+
+  ftp-server:
+    build: 
+      context: requirements/bonus/ftp_server
+      args:
+        FTP_USR: ${FTP_USR}
+        FTP_PWD: ${FTP_PWD}
+    container_name: ftp-server
+    depends_on:
+      - wordpress
+    ports:
+      - "21:21"
+    volumes:
+      - wordpress:/var/www
+    networks:
+      - inception
+    restart: always
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    restart: always
+    depends_on:
+      - mariadb
+    expose:
+     - "9000"
+    networks:
+      - inception
+
+  cadvisor:
+    container_name: cadvisor
+    build: ./requirements/bonus/cadvisor/.
+    image: cadvisor
+    ports:
+      - "8080:8080"
+    networks:
+      - inception
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
+
+# bridge: default network driver used by docker
+# creates a private network for the containers
+# containers can communicate between each others but they are isolated from external network
+
+# ////////////////////////// NETWORKS \\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# bridge : containers can communicate just btw them - no with outside
+networks:
+  inception:
+    driver: bridge
+    name: inception
+
+
+# ////////////////////////// VOLUMES \\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# Named volumes: local driver (default)
+# driver_opts:
+# type: none -> volume not backed by a specific storage driver
+# device: <path> -> host's local path storing volume data
+# o: bind -> mount device path into the container
+
+volumes:
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      type: none
+      device: /home/mathia/data/wordpress
+      o: bind
+      
+  mariadb:
+    driver: local
+    name: mariadb
+    driver_opts:
+      type: none
+      device: /home/mathia/data/mysql
+      o: bind
