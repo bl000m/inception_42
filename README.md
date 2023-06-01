@@ -46,6 +46,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 12. Install Make: `sudo apt-get install make`
 13. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
 14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
+15. Bonus part: `sudo apt-get install filezilla`
 <br>
 
 ## Installation Process for Docker Engine + client
@@ -200,6 +201,8 @@ As soon as docker-compose finds the value for the environment variables set in d
 	*  docker network inspect network_name -> to check what containers are linked in a certain network
 	*  docker logs container_name
 
+* Bonus part checking
+	* REDIS: `sudo docker exec -it redis bash` + `redis-cli -h localhost` + `ping` => should give PONG
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
