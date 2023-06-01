@@ -2,6 +2,8 @@
 
 # static website
 mv /tmp/index.html /var/www/html/wordpress/index.html
+mv /tmp/style.css /var/www/html/wordpress/style.css
+mv /tmp/images /var/www/html/wordpress/images
 
 # Change directory to where the WordPress file will be downloaded
 cd /var/www/html/wordpress

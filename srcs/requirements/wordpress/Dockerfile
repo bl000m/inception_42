@@ -27,6 +27,8 @@ RUN apt-get install -y \
 
 # static website
 COPY conf/index.html /tmp/index.html
+COPY conf/style.css /tmp/style.css
+COPY conf/images /tmp/images
 
 # Create wordpress installation directory
 RUN mkdir -p /var/www/html/wordpress
