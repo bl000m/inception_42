@@ -1,10 +1,5 @@
 version: '3.7'
 
-
-# memo: checking this l=instruction in nginx.conf: location / {
-#     try_files $uri $uri/ /index.html;
-#     }
-
 # sudo lsof -i :6589
 # sudo lsof -i :443 -> nginx
 # sudo lsof -i :6379 -> redis
@@ -12,9 +7,10 @@ version: '3.7'
 # sudo lsof -i :9000
 
 
-# cAdvisors: http://mpagani.42.fr:8080/containers/
+# cAdvisors: localhost:8080/containers/
 # adminer: https://mpagani.42.fr/adminer
 # redis: enter the redis container and type "redis-cli -h localhost", than "ping". If ansers is PONG server is running.
+
 # ////////////////////////// SERVICES \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 services:
@@ -96,8 +92,6 @@ services:
       - wordpress
     ports:
       - "21:21"
-      # - "20:20"
-      # - "21100-21110:21100-21110"
     volumes:
       - wordpress:/var/www
     networks:
@@ -105,6 +99,7 @@ services:
     restart: always
 
   adminer:
+    container_name: adminer
     build: ./requirements/bonus/adminer
     restart: always
     depends_on:
@@ -120,7 +115,6 @@ services:
     image: cadvisor
     ports:
       - "8080:8080"
-      # - "9443:9443"
     networks:
       - inception
     volumes:
@@ -157,7 +151,7 @@ volumes:
     name: wordpress
     driver_opts:
       type: none
-      device: /home/mpagani/data/wordpress
+      device: /home/${DB_USER}/data/wordpress
       o: bind
       
   mariadb:
@@ -165,5 +159,5 @@ volumes:
     name: mariadb
     driver_opts:
       type: none
-      device: /home/mpagani/data/mysql
+      device: /home/${DB_USER}/data/mysql
       o: bind
