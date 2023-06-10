@@ -39,14 +39,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 6. Install the sudo package: `sudo apt install sudo`
 7. Install Git: `sudo apt-get install git`
 8. Install OpenSSH Server: `sudo apt-get install openssh-server`
-9. Install Docker: `sudo apt-get install docker.io`
-10. Grant Docker permissions to the current user: `sudo usermod -aG docker $USER`
-    This command adds the current user to the "docker" group, allowing them to interact with the Docker daemon and run Docker containers.
-11. Connect to the GitHub repository by creating an SSH key: `ssh-keygen`
-12. Install Make: `sudo apt-get install make`
-13. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
-14. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
-15. Bonus part: `sudo apt-get install filezilla`
+9. Connect to the GitHub repository by creating an SSH key: `ssh-keygen`
+10. Install Make: `sudo apt-get install make`
+11. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
+12. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
+13. Bonus part: `sudo apt-get install filezilla`
 <br>
 
 ## Installation Process for Docker Engine + client
@@ -91,7 +88,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * `sudo chmod a+r /etc/apt/keyrings/docker.gpg`: Changes permissions for the GPG key.
 
 * `echo "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`: Sets up the Docker repository.
-
+* `sudo usermod -aG docker $USER`: Grant Docker permissions to the current user:
 <br>
 
 ### Install Docker Engine:
@@ -151,7 +148,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 * **Image/container handling in the shell (commands to build, run, and inspect images)**:
-	* docker build -t image_name:tag_name .: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
+	* `docker build -t image_name:tag_name .`: Builds an image with the specified image_name and tag_name. The '.' indicates that the image should be built in the current directory (a different directory can be specified).
 	* `docker images`: Lists the available images.
 	* `docker run -d --name container_name image_name:tag_name`: Creates a container (process) with the specified container_name using the specified image.
 	* `docker ps`: Checks if the container is running.
