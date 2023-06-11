@@ -42,7 +42,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 9. Connect to the GitHub repository by creating an SSH key: `ssh-keygen`
 10. Install Make: `sudo apt-get install make`
 11. Modify the `/etc/hosts` file and assign `login.42.fr` to `127.0.0.1`
-12. Manually create the following directories in the root: `data/mariadb` and `data/wordpress`
+12. Manually create the following directories in the root: `data/mariadb`, `data/wordpress` and `data/mysql`
 13. Bonus part: `sudo apt-get install filezilla`
 <br>
 
