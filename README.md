@@ -25,7 +25,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 * Avoid Logical Volume Management (LVM): While testing Docker images and containers, it's crucial to avoid using LVM unless you have a clear understanding of how it works. Improper management of Docker images and containers, such as not stopping or removing them correctly, can lead to excessive disk usage. This can quickly saturate swap, home, or root partitions, resulting in performance issues or disk space shortages.
 <br>
  
-## Once created the virtual machine, follow these steps for it to be a playground for this project:
+## Environment setup:
 <p align="center">
 	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/shell2.png" width="200">
 </p>
@@ -186,20 +186,27 @@ When setting up a virtual machine, particularly if you're working on Inception d
 </p>
 <br>
 
-* Docker-compose
+* **Docker-compose**
 	* When you run the docker-compose up command, the docker-compose.yml file looks for the values of the environment variables in the .env file. The docker-compose command automatically looks for a .env file in the project directory or in the parent folder of your compose file.
 
 As soon as docker-compose finds the value for the environment variables set in docker-compose.yml in the .env file, Compose substitutes the values accordingly and starts the service. Staring the service creates the container defined in the docker-compose.yml file.
 
-* Troubleshooting
+* **Troubleshooting**
 	* `sudo systemctl restart docker.socket docker.service` => if cannot stop or restart a container
 	* `docker exec -it container_name bash` -> to acces the container bash and check files and databases
 	*  `sudo lsof -i` :port_number -> to check if a certain port is already listening for other process that not allow our containers/process to be listened for (not starting). In the case : `sudo kill process_running_pid`
 	*  `docker network inspect network_name` -> to check what containers are linked in a certain network
 	*  `docker logs container_name`
 
-* Bonus part checking
-	* REDIS: `sudo docker exec -it redis bash` + `redis-cli -h localhost` + `ping` => should give `PONG`
+* **Bonus part checking**
+	* **REDIS**: Execute the following commands in the terminal:
+		* `sudo docker exec -it redis bash` 
+		*`redis-cli -h localhost`
+		* Enter ping
+		* If the response is PONG, it indicates successful connectivity.
+	* **ADMINER**: just write in the browser: `https://yourlogin.42.fr/adminer"`
+	* **FTP Server**: if Filezilla is installed, as specified in the **Environment setup section**, launch it with `filezilla`: write ``yourlogin.42.fr`` as `host`, `your FTP_USER` (as specifiaed in the .env)` as `USER` and `your FTP_PSW` as `PASSWORD`. Click on `connect`. In the rightsection of Filezilla window (empty before) you should now access the project files.  
+	* **cAdvisor**: just check the port 8080 in the browser: `http://yourlogin.42.fr:8080`, that should redirect to `http://**yourlogin**.42.fr:8080/containers/`
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
