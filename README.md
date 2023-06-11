@@ -127,9 +127,9 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 * **Consists of three parts**:
-	* Starting image (FROM)
+	* Starting image (`FROM`)
 	* Instructions
-	* Last line (RUN or ENTRYPOINT) used to launch the process(es) or supervise them.
+	* Last line (`RUN` or `ENTRYPOINT`) used to launch the process(es) or supervise them.
 <br>
 
 * **Instructions**:
