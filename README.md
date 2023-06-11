@@ -221,20 +221,20 @@ During evaluation you need to transfer the downloaded repo from VogSphere to the
 
 ### **Follow these steps:**
 
-	* set up the port forwarding in VirtualBox to enable communication between the host and guest machines (host port 3022 needs to communicate with guest port 22).
+* set up the port forwarding in VirtualBox to enable communication between the host and guest machines (host port 3022 needs to communicate with guest port 22).
 	
-	* Install SSH on both the host and guest machines.
+* Install SSH on both the host and guest machines.
 	
-	* Create a folder named "eval" in the guest machine. This folder will be used to store the project files.
+* Create a folder named "eval" in the guest machine. This folder will be used to store the project files.
 	
-	* On the host machine's shell, once the repo have been downloaded from the VogSphere enter the following command to send the project files to the guest machine:
-		* `tar -czvf inception.tar.gz inception`: to compress the repo
-		* `scp -P 3022 folder@localhost:/home/yourlogin/eval`: transfer the co;pressed repo to the virtual machine
+* On the host machine's shell, once the repo have been downloaded from the VogSphere enter the following command to send the project files to the guest machine:
+	* `tar -czvf inception.tar.gz inception`: to compress the repo
+	* `scp -P 3022 folder@localhost:/home/yourlogin/eval`: transfer the co;pressed repo to the virtual machine
 		
-	* On the guest machine's shell, extract the project files by executing the following command:
-		* `tar -xzvf inception.tar.gz`
+* On the guest machine's shell, extract the project files by executing the following command:
+	* `tar -xzvf inception.tar.gz`
 		
-	* **Note**: ensure that the ".env" file is not included in the project repository. Instead, keep it in a separate folder on the virtual machine. Once the file transfer is complete, add the ".env" file to the inception project files.
+* **Note**: ensure that the ".env" file is not included in the project repository. Instead, keep it in a separate folder on the virtual machine. Once the file transfer is complete, add the ".env" file to the inception project files.
 <br><br>
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
