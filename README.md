@@ -70,7 +70,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* Docker leverages the capabilities provided by the Linux kernel, such as namespaces and control groups (cgroups), to isolate and manage containers. Namespaces allow Docker to create isolated environments for processes, such as network, filesystem, and process namespaces. Cgroups ensure resource allocation and utilization control for containers.
 <br>
 
-### Uninstall old versions:
+### Uninstall old versions if necessary:
 
 * `sudo apt-get remove docker docker-engine docker.io containerd runc`: Removes older versions of Docker.
 <br>
@@ -99,9 +99,9 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ### Install Docker Compose:
-* `sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
-* `sudo chmod +x /usr/local/bin/docker-compose`
-* `docker-compose --version` => check if installed
+* `sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`: Downloads the Docker Compose binary file from a specific URL and saves it to the /usr/local/bin directory, using the appropriate file name based on the operating system.
+* `sudo chmod +x /usr/local/bin/docker-compose`: Changes the permissions of the downloaded Docker Compose binary file to make it executable.
+* `docker-compose --version`: Verifies if Docker Compose is installed and displays its version information.
 
 ## **Key Concepts**
 <p align="center">
