@@ -194,12 +194,12 @@ As soon as docker-compose finds the value for the environment variables set in d
 * Troubleshooting
 	* `sudo systemctl restart docker.socket docker.service` => if cannot stop or restart a container
 	* `docker exec -it container_name bash` -> to acces the container bash and check files and databases
-	*  `sudo lsof -i` :port_number -> to check if a certain port is already listening for other process that not allow our containers/process to be listened for (not starting). In the case : sudo kill process_running_pid
+	*  `sudo lsof -i` :port_number -> to check if a certain port is already listening for other process that not allow our containers/process to be listened for (not starting). In the case : `sudo kill process_running_pid`
 	*  `docker network inspect network_name` -> to check what containers are linked in a certain network
 	*  `docker logs container_name`
 
 * Bonus part checking
-	* REDIS: `sudo docker exec -it redis bash` + `redis-cli -h localhost` + `ping` => should give PONG
+	* REDIS: `sudo docker exec -it redis bash` + `redis-cli -h localhost` + `ping` => should give `PONG`
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
