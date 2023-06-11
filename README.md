@@ -215,9 +215,10 @@ As soon as docker-compose finds the value for the environment variables set in d
 
 # Evaluation setup
 <p align="center">
-	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/evaluation.png" width="500">
+	<img src="https://github.com/bl000m/inception_42/blob/main/readme_images/evaluation.png" style="max-width: 100%; width: 100%;">
 </p>
 <br>
+
 ## How to prepare the evaluation process on Virtual Machine
 During evaluation you need to transfer the downloaded repo from VogSphere to the virtual machine and since you can't install filezilla without the su privileges (at the moment I write students at 42 are not allowed to do that) the best and easiest solution is using SCP protocol.<br><br>
 **SCP (Secure Copy Protocol)** is a network protocol used for securely transferring files between a local and a remote host. It is a built-in utility in most Linux distributions, so there is no need to install it separately. SCP uses SSH for authentication and encryption, ensuring secure file transfers over a network.
