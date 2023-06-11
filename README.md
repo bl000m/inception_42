@@ -201,12 +201,16 @@ As soon as docker-compose finds the value for the environment variables set in d
 * **Bonus part checking**
 	* **REDIS**: Execute the following commands in the terminal:
 		* `sudo docker exec -it redis bash` 
-		*`redis-cli -h localhost`
+		* `redis-cli -h localhost`
 		* Enter ping
 		* If the response is PONG, it indicates successful connectivity.
-	* **ADMINER**: just write in the browser: `https://yourlogin.42.fr/adminer"`
-	* **FTP Server**: if Filezilla is installed, as specified in the **Environment setup section**, launch it with `filezilla`: write ``yourlogin.42.fr`` as `host`, `your FTP_USER` (as specifiaed in the .env)` as `USER` and `your FTP_PSW` as `PASSWORD`. Click on `connect`. In the rightsection of Filezilla window (empty before) you should now access the project files.  
-	* **cAdvisor**: just check the port 8080 in the browser: `http://yourlogin.42.fr:8080`, that should redirect to `http://**yourlogin**.42.fr:8080/containers/`
+	* **ADMINER**: Simply open the browser and visit : `https://yourlogin.42.fr/adminer"`
+	* **FTP Server**: if Filezilla is installed, as mentioned in the **Environment setup section**, launch Filezilla (`filezilla` in the command line) and enter the following details: 
+		* HOST: `yourlogin.42.fr`
+		* USER: `your FTP_USER` (as specifiaed in the .env)` 
+		* PASSWORD: `your FTP_PSW` as `PASSWORD`. 
+		* Click on "Connect." The project files should now be accessible in the right section of the Filezilla window (that was empty before).  
+	* **cAdvisor**: Check if port 8080 is accessible in the browser by visiting : `http://yourlogin.42.fr:8080`. It should redirect to `http://yourlogin.42.fr:8080/containers/`
 
 ## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
