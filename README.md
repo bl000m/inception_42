@@ -53,7 +53,7 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 ### NB
-* Docker client / Docker engine (server) / REST API
+* **Docker client / Docker engine (server) / REST API**
 	* The following installation process includes both Docker Server (Docker Engine) and Docker Client. 
 		* Docker Engine is responsible for running and managing Docker containers on the server
 		* Docker Client is used to interact with the Docker Server and execute commands.
@@ -61,11 +61,11 @@ When setting up a virtual machine, particularly if you're working on Inception d
 	* When you execute Docker commands using the client, such as running a container or building an image, the client sends HTTP requests to the server's REST API. These requests contain instructions and parameters for the desired Docker operation.
 	<br>
 
-* REST API role
+* **REST API role**
 	* By implementing a REST API, the server exposes a set of endpoints (URLs) that represent different resources and actions. The client can then make HTTP requests to these endpoints, specifying the desired resource or operation.
 	* The Docker server receives these requests, processes them, and performs the necessary actions. It manages container lifecycles, handles image operations, and orchestrates the overall Docker environment.
 
-* The KERNEL role
+* **The KERNEL role**
 	* The kernel provides the underlying mechanisms for container isolation and resource management, allowing Docker to function efficiently and securely.
 	* Docker leverages the capabilities provided by the Linux kernel, such as namespaces and control groups (cgroups), to isolate and manage containers. Namespaces allow Docker to create isolated environments for processes, such as network, filesystem, and process namespaces. Cgroups ensure resource allocation and utilization control for containers.
 <br>
