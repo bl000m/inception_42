@@ -215,23 +215,23 @@ As soon as docker-compose finds the value for the environment variables set in d
 
 # Evaluation setup
 ## How to prepare the evaluation process on Virtual Machine
-During evaluation you need to transfer the downloaded repo from VogSphere to the virtual machine and since you can't install filezilla without the su privileges (at the moment I write students at 42 are not allowed to do that) the best and easiest solution is using SCP protocol.<br>
+During evaluation you need to transfer the downloaded repo from VogSphere to the virtual machine and since you can't install filezilla without the su privileges (at the moment I write students at 42 are not allowed to do that) the best and easiest solution is using SCP protocol.<br><br>
 **SCP (Secure Copy Protocol)** is a network protocol used for securely transferring files between a local and a remote host. It is a built-in utility in most Linux distributions, so there is no need to install it separately. SCP uses SSH for authentication and encryption, ensuring secure file transfers over a network.
 <br>
 
 ### **Follow these steps:**
 
-* set up the port forwarding in VirtualBox to enable communication between the host and guest machines (host port 3022 needs to communicate with guest port 22).
+* **set up the port forwarding in VirtualBox** to enable communication between the host and guest machines (host port 3022 needs to communicate with guest port 22).
 	
-* Install SSH on both the host and guest machines.
+* **Install SSH** on both the host and guest machines.
 	
-* Create a folder named "eval" in the guest machine. This folder will be used to store the project files.
+* **Create a folder named "eval"** in the guest machine. This folder will be used to store the project files.
 	
-* On the host machine's shell, once the repo have been downloaded from the VogSphere enter the following command to send the project files to the guest machine:
+* On the host machine's shell, once the repo have been downloaded from the VogSphere enter the following command to **send the project files to the guest machine**:
 	* `tar -czvf inception.tar.gz inception`: to compress the repo
 	* `scp -P 3022 folder@localhost:/home/yourlogin/eval`: transfer the co;pressed repo to the virtual machine
 		
-* On the guest machine's shell, extract the project files by executing the following command:
+* On the guest machine's shell, **extract** the project files by executing the following command:
 	* `tar -xzvf inception.tar.gz`
 		
 * **Note**: ensure that the ".env" file is not included in the project repository. Instead, keep it in a separate folder on the virtual machine. Once the file transfer is complete, add the ".env" file to the inception project files.
