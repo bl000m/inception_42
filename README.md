@@ -133,18 +133,18 @@ When setting up a virtual machine, particularly if you're working on Inception d
 <br>
 
 * **Instructions**:
-	* FROM: Specifies the base image.
-	* WORKDIR: Sets the working directory for subsequent instructions.
-	* ARG: Defines variables that users can pass at build-time to the builder.
-	* ENV: Sets environment variables.
-	* USER: Sets the user to execute the following instructions and the final process (should not be ROOT).
-	* ADD: Adds local or remote files to the image (via curl). The --chown flag can be used to change the owner of the added file.
-	* COPY: Similar to ADD, but does not allow downloading remote files.
-	* RUN: Executes shell commands, utilizes caches, and creates layers (each RUN instruction adds a different layer).
-	* CMD: Defines the main process to be launched. It is typically specified in a list format. For example: CMD ["python3", "-m", "flask", "run"]
-	* ENTRYPOINT: Similar to CMD. Note that using CMD and ENTRYPOINT together can be dangerous.
-	* LABEL: Defines and injects metadata (a collection of key-value pairs). This can be inspected using the "docker image inspect" command.
-	* EXPOSE: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
+	* `FROM`: Specifies the base image.
+	* `WORKDIR`: Sets the working directory for subsequent instructions.
+	* `ARG`: Defines variables that users can pass at build-time to the builder.
+	* `ENV`: Sets environment variables.
+	* `USER`: Sets the user to execute the following instructions and the final process (should not be ROOT).
+	* `ADD`: Adds local or remote files to the image (via curl). The --chown flag can be used to change the owner of the added file.
+	* `COPY`: Similar to ADD, but does not allow downloading remote files.
+	* `RUN`: Executes shell commands, utilizes caches, and creates layers (each RUN instruction adds a different layer).
+	* `CMD`: Defines the main process to be launched. It is typically specified in a list format. For example: CMD ["python3", "-m", "flask", "run"]
+	* `ENTRYPOINT`: Similar to CMD. Note that using CMD and ENTRYPOINT together can be dangerous.
+	* `LABEL`: Defines and injects metadata (a collection of key-value pairs). This can be inspected using the "docker image inspect" command.
+	* `EXPOSE`: Declares ports on which the processes launched by the image will listen. For example: EXPOSE 80/tcp (with protocol specified).
 <br>
 
 * **Image/container handling in the shell (commands to build, run, and inspect images)**:
