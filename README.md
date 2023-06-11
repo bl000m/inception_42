@@ -215,9 +215,10 @@ As soon as docker-compose finds the value for the environment variables set in d
 
 # Evaluation setup
 ## How to prepare the evaluation process on Virtual Machine
-During evaluation you need to transfer the downloaded repo from VogSphere to the virtual machine and since you can't install filezilla without the su privileges (at the moment I write students at 42 are not allowed to do that) the best and easiest solution is using SCP protocol.
+During evaluation you need to transfer the downloaded repo from VogSphere to the virtual machine and since you can't install filezilla without the su privileges (at the moment I write students at 42 are not allowed to do that) the best and easiest solution is using SCP protocol.<br>
 **SCP (Secure Copy Protocol)** is a network protocol used for securely transferring files between a local and a remote host. It is a built-in utility in most Linux distributions, so there is no need to install it separately. SCP uses SSH for authentication and encryption, ensuring secure file transfers over a network.
 <br>
+
 ## **Follow these steps:**
 	* set up the port forwarding in VirtualBox to enable communication between the host and guest machines (host port 3022 needs to communicate with guest port 22).
 	* Install SSH on both the host and guest machines.
