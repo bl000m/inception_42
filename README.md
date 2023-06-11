@@ -240,9 +240,9 @@ During evaluation you need to transfer the downloaded repo from VogSphere to the
 	* `tar -xzvf inception.tar.gz`
 		
 * **Note**: ensure that the ".env" file is not included in the project repository. Instead, keep it in a separate folder on the virtual machine. Once the file transfer is complete, add the ".env" file to the inception project files.
-<br><br>
+<br><br><br>
 
-## Sources: a video playlist with the most interesting tuto on the subject (click on the image)
+# Sources: a video playlist with the most interesting tuto on the subject (click on the image)
 [![](https://github.com/bl000m/inception_42/blob/main/readme_images/playlist%20inception.png)](https://www.youtube.com/playlist?list=PLuO5MajLbJtlpqXgQABdxC0XCaqPq76mh)
 
 <br>
